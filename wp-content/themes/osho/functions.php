@@ -6,6 +6,9 @@ function osho_styles(){
 }
 add_action("wp_enqueue_scripts","osho_styles");
 
+// Enqueue of scripts
+
+
 // Essential theme Settings
 function osho_essential_theme_setup(){
     add_theme_support('custom-logo');
