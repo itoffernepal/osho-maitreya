@@ -1,6 +1,0 @@
-This favicon was generated using the following font:
-
-- Font Title: Noto Sans Khmer
-- Font Author: Copyright 2016 Google Inc. All Rights Reserved.
-- Font Source: http://fonts.gstatic.com/s/notosanskhmer/v15/ijw3s5roRME5LLRxjsRb-gssOenAyendxrgV2c-Zw-9vbVUti_Z_dWgtWYuNAJz4kAbrddiA.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
