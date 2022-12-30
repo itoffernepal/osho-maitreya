@@ -1,5 +1,6 @@
 <?php get_header();?>
 <!-- Banner Section start -->
+<h1>this is test</h1>
 <div class="hero">
     <section class="hero-sec p-0">
         <div class="hero-banner">
