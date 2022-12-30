@@ -1,25 +1,41 @@
 <?php get_header();?>
-
+<!-- Banner Section start -->
 <div class="hero">
     <section class="hero-sec p-0">
         <div class="hero-banner">
             <div class="hero-slider">
+                <!-- Banner Image -->
+                <?php if(have_rows('banner_image')):?>
+                    <?php while(have_rows('banner_image')) : the_row();
+                    $image1 = get_sub_field('image_1');
+                    $image2 = get_sub_field('image_2');
+                    $image3 = get_sub_field('image_3');
+                    ?>
                 <div class="slide-item">
-                    <img src="<?php echo get_template_directory_uri();?>/images/hero-img.jpg" class="img-fluid">
+                    <img src="<?php echo esc_url($image1['url']);?>" class="img-fluid">
                 </div>
                 <div class="slide-item">
-                    <img src="<?php echo get_template_directory_uri();?>/images/hero-img.jpg" class="img-fluid">
+                    <img src="<?php echo esc_url($image2['url']);?>" class="img-fluid">
                 </div>
                 <div class="slide-item">
-                    <img src="<?php echo get_template_directory_uri();?>/images/hero-img.jpg" class="img-fluid">
+                    <img src="<?php echo esc_url($image3['url']);?>" class="img-fluid">
                 </div>
+                <?php endwhile;endif;?>
+                <!-- Banner Image end -->
             </div>
+            <!-- Banner Title , content , button -->
             <div class="hero-content text-black">
                 <div class="container">
                     <div class="banner-content">
                         <h1><?php the_field('banner_title');?></h1>
                         <?php the_field('banner_content');?>
-                        <a href="#" class="page-btn">Explore more</a>
+                        <?php $button = get_field('banner_button');?>
+                        <?php if($button):
+                            $button_url = $button['url'];
+                            $button_title = $button['title'];
+                            ?>
+                        <a href="<?php echo esc_url($button_url);?>" class="page-btn"><?php echo esc_html($button_title);?></a>
+                        <?php endif;?>
                     </div>
                     <div class="scroll-btn text-center">
                         <a href="#" class="down-anchor"></a>
@@ -30,14 +46,15 @@
         </div>
     </section>
 </div>
+<!-- Banner section end -->
 <div class="audio-books">
     <div class="container">
         <section class="ab-sec">
             <div class="section-intro">
                 <div class="section-title">
-                    <h2>Latest Audiobooks</h2>
+                    <h2><?php the_field('audiobook_title');?></h2>
                 </div>
-                <p>With these immortal words, Osho both dictates his epitaph and dispenses with his biography.</p>
+                <p><?php the_field('audiobook_content');?></p>
             </div>
             <div class="ab-slider">
                 <div class="slide-item ab-card">
@@ -113,12 +130,23 @@
 
             </div>
             <div class="text-center more-link">
-                <a href="#" class="page-btn dark mt-5">View all</a>
+                <?php $audio_button = get_field('audiobook_button');?>
+                <?php if($audio_button):
+                    $audio_button_url = $audio_button['url'];
+                    $audio_button_title = $audio_button['title'];
+                    ?>
+                <a href="<?php echo esc_url($audio_button_url);?>" class="page-btn dark mt-5">
+                <?php echo esc_html($audio_button_title);?>
+            </a>
+                <?php endif;?>
             </div>
         </section>
     </div>
     <div class="line-img">
-        <img src="<?php echo get_template_directory_uri();?>/images/line.png" alt="">
+        <?php $bg_image= get_field('audiobook_bg_image');?>
+        <?php if(!empty($bg_image)):?>
+        <img src="<?php echo esc_url($bg_image['url']);?>" alt="<?php echo esc_html($bg_image['alt']);?>">
+        <?php endif;?>
     </div>
 </div>
 <div class="about position-relative">
@@ -127,7 +155,10 @@
         <div class="row">
             <div class="offset-lg-7 col-lg-5">
                 <div class="abt-video position-relative h-100">
-                    <img src="<?php echo get_template_directory_uri();?>/images/about-img.png" class="img-fluid" alt="">
+                    <?php $about_osho_image = get_field('about_osho_image');?>
+                    <?php if(!empty($about_osho_image)):?>
+                    <img src="<?php echo esc_url($about_osho_image['url']);?>" class="img-fluid" alt="<?php echo esc_html($about_osho_image['alt']);?>">
+                        <?php endif;?>
                 </div>
             </div>
         </div>
@@ -138,20 +169,20 @@
                 <div class="col-lg-7">
                     <div class="section-intro mb-0">
                         <div class="section-title">
-                            <h2>About Osho</h2>
+                            <h2><?php the_field('about_osho_title');?></h2>
                         </div>
-                        <p>Never Born – Never Died Only visited this planet Earth between December 11, 1931 and January
-                            19, 1990</p>
+                        <p><?php the_field('about_osho_subtitle');?></p>
                     </div>
-                    <p>Born in the small city of Kuchwada in India in 1931, Osho attained enlightenment at the age of
-                        twenty-one on 21st March 1953. Osho started his spiritual work in the early Seventies and in no
-                        time attracted the attention of seekers from all around the world. Thousands of young people
-                        flocked to the exotic ashram in Pune, India to meditate in his presence. Later in 1981, Osho
-                        travelled to America, where he established his spiritual commune, Rajneeshpuram. During
-                        1985-1986 Osho also made a world tour and travelled to 21 different countries including Nepal.
+                    <p><?php the_field('about_osho_content');?>
                     </p>
                     <div class="text-center more-link">
-                        <a href="#" class="page-btn mt-5">Explore more</a>
+                        <?php $about_osho_button = get_field('about_osho_button');?>
+                        <?php if($about_osho_button):
+                            $about_osho_button_url = $about_osho_button['url'];
+                            $about_osho_button_title = $about_osho_button['title'];
+                            ?>
+                        <a href="<?php echo esc_url($about_osho_button_url);?>" class="page-btn mt-5"><?php echo esc_html($about_osho_button_title);?></a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
@@ -163,32 +194,33 @@
         <section class="om-sec">
             <div class="section-intro">
                 <div class="section-title">
-                    <h2>About Osho Maitreya</h2>
+                    <h2><?php the_field('about_osho_maitreya_title');?></h2>
                 </div>
-                <p>Osho Maitreya is a pristine and peaceful space for the spiritually inclined. Seekers from world-over,
-                    converge here to participate in Meditation retreats and benefit from the pulsating energy-field that
-                    has built up with the continued practice of Meditation.</p>
+                <p><?php the_field('about_osho_maitreya_content');?></p>
             </div>
             <div class="om-slider">
+                <?php if(have_rows('about_osho_maitreya_slider')):?>
+                    <?php while(have_rows('about_osho_maitreya_slider')) : the_row();?>
                 <div class="slide-item">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-img">
-                                <img src="<?php echo get_template_directory_uri();?>/images/slider-img.png" class="slide-img" alt="">
+                                <?php $slider = get_sub_field('image');?>
+                                <?php if(!empty($slider)):?>
+                                <img src="<?php echo esc_url($slider['url']);?>" class="slide-img" alt="<?php echo esc_html($slider['alt']);?>">
+                                <?php endif;?>
                             </div>
                         </div>
                         <div class="slider-content">
                             <div class="slider-text">
-                                <h2>Osho Maitreya for Meditation 1</h2>
-                                <p>Osho Maitreya is a pristine and peaceful space for the spiritually inclined. Seekers
-                                    from world-over, converge here to participate in Meditation retreats and benefit
-                                    from the pulsating energy-field that has built up with the continued practice of
-                                    Meditation.</p>
+                                <h2><?php the_sub_field('title');?></h2>
+                                <?php the_sub_field('content');?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item">
+                <?php endwhile;endif;?>
+                <!-- <div class="slide-item">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-img">
@@ -205,7 +237,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </div>

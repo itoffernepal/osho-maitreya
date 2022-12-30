@@ -44,15 +44,6 @@ jQuery(document).ready(function () {
 
 
 
-    // for counter
-    jQuery(document).ready(function ($) {
-        var counterSelector = $('.counter');
-        counterSelector.counterUp({
-            delay: 10,
-            time: 5000
-        });
-    });
-
 
 
 
