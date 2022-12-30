@@ -170,26 +170,26 @@ function gallery_custom_post_type() {
   
   // Set UI labels for Custom Post Type
       $labels = array(
-          'name'                => _x( 'Galleries', 'Post Type General Name', 'twentytwentyone' ),
-          'singular_name'       => _x( 'Gallery', 'Post Type Singular Name', 'twentytwentyone' ),
-          'menu_name'           => __( 'Galleries', 'twentytwentyone' ),
-          'parent_item_colon'   => __( 'Parent Gallery', 'twentytwentyone' ),
-          'all_items'           => __( 'All Galleries', 'twentytwentyone' ),
-          'view_item'           => __( 'View Gallery', 'twentytwentyone' ),
-          'add_new_item'        => __( 'Add New Gallery', 'twentytwentyone' ),
-          'add_new'             => __( 'Add New', 'twentytwentyone' ),
-          'edit_item'           => __( 'Edit Gallery', 'twentytwentyone' ),
-          'update_item'         => __( 'Update Gallery', 'twentytwentyone' ),
-          'search_items'        => __( 'Search Gallery', 'twentytwentyone' ),
-          'not_found'           => __( 'Not Found', 'twentytwentyone' ),
-          'not_found_in_trash'  => __( 'Not found in Trash', 'twentytwentyone' ),
+          'name'                => _x( 'Galleries', 'Post Type General Name', 'osho' ),
+          'singular_name'       => _x( 'Gallery', 'Post Type Singular Name', 'osho' ),
+          'menu_name'           => __( 'Galleries', 'osho' ),
+          'parent_item_colon'   => __( 'Parent Gallery', 'osho' ),
+          'all_items'           => __( 'All Galleries', 'osho' ),
+          'view_item'           => __( 'View Gallery', 'osho' ),
+          'add_new_item'        => __( 'Add New Gallery', 'osho' ),
+          'add_new'             => __( 'Add New', 'osho' ),
+          'edit_item'           => __( 'Edit Gallery', 'osho' ),
+          'update_item'         => __( 'Update Gallery', 'osho' ),
+          'search_items'        => __( 'Search Gallery', 'osho' ),
+          'not_found'           => __( 'Not Found', 'osho' ),
+          'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
       );
         
   // Set other options for Custom Post Type
         
       $args = array(
-          'label'               => __( 'galleries', 'twentytwentyone' ),
-          'description'         => __( 'Gallery news and reviews', 'twentytwentyone' ),
+          'label'               => __( 'galleries', 'osho' ),
+          'description'         => __( 'Gallery news and reviews', 'osho' ),
           'labels'              => $labels,
           // Features this CPT supports in Post Editor
           'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
@@ -227,3 +227,59 @@ function gallery_custom_post_type() {
   */
     
   add_action( 'init', 'gallery_custom_post_type', 0 );
+
+  // ******************************************************************
+// Event CPT
+function event_custom_post_type() {
+  
+  // Set UI labels for Custom Post Type
+      $labels = array(
+          'name'                => _x( 'Events', 'Post Type General Name', 'osho' ),
+          'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'osho' ),
+          'menu_name'           => __( 'Events', 'osho' ),
+          'parent_item_colon'   => __( 'Parent Movie', 'osho' ),
+          'all_items'           => __( 'All Events', 'osho' ),
+          'view_item'           => __( 'View Event', 'osho' ),
+          'add_new_item'        => __( 'Add New Event', 'osho' ),
+          'add_new'             => __( 'Add New', 'osho' ),
+          'edit_item'           => __( 'Edit Event', 'osho' ),
+          'update_item'         => __( 'Update Event', 'osho' ),
+          'search_items'        => __( 'Search Event', 'osho' ),
+          'not_found'           => __( 'Not Found', 'osho' ),
+          'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
+      );
+        
+  // Set other options for Custom Post Type
+        
+      $args = array(
+          'label'               => __( 'events', 'osho' ),
+          'description'         => __( 'Event news and reviews', 'osho' ),
+          'labels'              => $labels,
+          // Features this CPT supports in Post Editor
+          'supports'            => array( 'title','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+          // You can associate this CPT with a taxonomy or custom taxonomy. 
+          'taxonomies'          => array( 'genres' ),
+         
+          'hierarchical'        => false,
+          'public'              => true,
+          'show_ui'             => true,
+          'show_in_menu'        => true,
+          'show_in_nav_menus'   => true,
+          'show_in_admin_bar'   => true,
+          'menu_position'       => 5,
+          'menu_icon'           => 'dashicons-bell',
+          'can_export'          => true,
+          'has_archive'         => true,
+          'exclude_from_search' => false,
+          'publicly_queryable'  => true,
+          'capability_type'     => 'post',
+          'show_in_rest' => true,
+    
+      );
+        
+      // Registering your Custom Post Type
+      register_post_type( 'events', $args );
+    
+  }
+
+  add_action( 'init', 'event_custom_post_type', 0 );
