@@ -220,47 +220,38 @@
                     </div>
                 </div>
                 <?php endwhile;endif;?>
-                <!-- <div class="slide-item">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="slider-img">
-                                <img src="<?php echo get_template_directory_uri();?>/images/slider-img.png" class="slide-img" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-content">
-                            <div class="slider-text">
-                                <h2>Osho Maitreya for Meditation 2</h2>
-                                <p>Osho Maitreya is a pristine and peaceful space for the spiritually inclined. Seekers
-                                    from world-over, converge here to participate in Meditation retreats and benefit
-                                    from the pulsating energy-field that has built up with the continued practice of
-                                    Meditation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </section>
     </div>
     <div class="line-img">
-        <img src="<?php echo get_template_directory_uri();?>/images/line.png" alt="">
+        <?php $maitreya_bg_image = get_field('about_osho_maitreya_bg_image');?>
+        <?php if(!empty($maitreya_bg_image)):?>
+        <img src="<?php echo esc_url($maitreya_bg_image['url']);?>" alt="<?php echo esc_html($maitreya_bg_image['alt']);?>">
+        <?php endif;?>
     </div>
 </div>
-<div class="bg-attachment position-relative" style="background:url(<?php echo get_template_directory_uri();?>/images/bga.jpg)">
+
+<div class="bg-attachment position-relative" style="background:url(<?php $background_image = get_field('quote_section_bg_image');
+                                            echo $background_image['url']; ?>)">
     <div class="container">
         <section class="bga-sec text-center large-p">
             <figure>
-                <img src="<?php echo get_template_directory_uri();?>/images/osho-white.png" class="img-fluid">
+                <?php $quote_logo = get_field('quote_section_logo');?>
+                <?php if(!empty($quote_logo)):?>
+                <img src="<?php echo esc_url($quote_logo['url']);?>" alt="<?php echo esc_html($quote_logo['alt']); ?>" class="img-fluid">
+                <?php endif;?>
             </figure>
             <div class="bga-text">
-                Osho Maitreya is a pristine and peaceful space for the spiritually inclined. Seekers from world-over,
-                converge here to participate in Meditation retreats and benefit from the pulsating energy-field that has
-                built up with the continued practice of Meditation. Osho is a contemporary enlightened mystic, visionary
-                and a rebel. He designed over six hundred techniques of meditation. These scientifically designed
-                techniques unleash a powerful and joyous dynamism between body-mind, creating an effortless and
-                spontaneous backdrop for meditation.
+                <?php the_field('quote_section_content');?>
             </div>
             <div class="more-link">
-                <a href="#" class="page-btn">Explore more</a>
+                <?php $quote_button = get_field('quote_section_button');?>
+                <?php if($quote_button):
+                    $quote_button_url = $quote_button['url'];
+                    $quote_button_title = $quote_button['title'];
+                    ?>
+                <a href="<?php echo esc_url($quote_button_url);?>" class="page-btn"><?php echo esc_html($quote_button_title);?></a>
+            <?php endif;?>
             </div>
         </section>
     </div>
@@ -270,10 +261,9 @@
         <section class="events-sec">
             <div class="section-intro">
                 <div class="section-title">
-                    <h2>Upcoming Events</h2>
+                    <h2><?php the_field('upcoming_title');?></h2>
                 </div>
-                <p>Osho has given thousands of discourses on all the well-known and not so known mystics of the world,
-                    adopt osho, visiting our events.</p>
+                <?php the_field('upcoming_content');?>
             </div>
             <div class="event-brief">
                 <div class="row g-0 ">
@@ -311,7 +301,13 @@
                 </div>
             </div>
             <div class="more-link mt-5 text-center">
-                <a href="#" class="page-btn dark">View all events</a>
+                <?php $upcoming_button = get_field('upcoming_event_button');?>
+                <?php if($upcoming_button):
+                    $upcoming_button_url    = $upcoming_button['url'];
+                    $upcoming_button_title  = $upcoming_button['title'];
+                    ?>
+                <a href="<?php echo esc_url($upcoming_button_url);?>" class="page-btn dark"><?php echo esc_html($upcoming_button_title);?></a>
+                <?php endif;?>
             </div>
         </section>
     </div>
@@ -344,41 +340,57 @@
         <section class="gallery-sec pt-0">
             <div class="section-intro">
                 <div class="section-title">
-                    <h2>Gallery</h2>
+                    <h2><?php the_field('gallery_title');?></h2>
                 </div>
-                <p>Some glimpse of what we do hereand Events organized by Osho Maitreya.</p>
+                <?php the_field('gallery_content');?>
             </div>
             <div class="row">
+                <?php $gallery = array(
+                    'post_type'         => 'galleries',
+                    'posts_per_page'    => 3,
+                    'orderby'           => 'date',
+                    'order'             => 'DES',
+                );
+                $gallery_query = new WP_Query($gallery);
+                if($gallery_query->have_posts()):
+                    while($gallery_query->have_posts()) : $gallery_query->the_post();
+                 ?>
                 <div class="col-lg-4">
-                    <div class="gallery-card">
-                        <span class="total-images">10 Photos</span>
-                        <a href="#">
 
-                            <img src="<?php echo get_template_directory_uri();?>/images/gallery1.png" class="img-fluid" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
+                <?php 
+                $images = get_field('add_images');
+                if( $images ): ?>
+                
                     <div class="gallery-card">
-                        <span class="total-images">10 Photos</span>
-                        <a href="#">
-
-                            <img src="<?php echo get_template_directory_uri();?>/images/gallery2.png" class="img-fluid" alt="">
+                    <?php $gallery_rows= get_field('add_images'); ?>
+                        <span class="total-images"><?php echo $total_images = count($gallery_rows); ?> Photos</span>
+                        
+                        <a href="<?php the_post_thumbnail_url();?>" data-fancybox="image-preview" caption="caption">
+                            <img src="<?php the_post_thumbnail_url();?>" class="img-fluid" alt="">
                         </a>
+                        <?php foreach( $images as $image ): ?>
+                        <div class="more-images"  style="display:none">
+                            <a href="<?php echo esc_url($image['url']); ?>" data-fancybox="image-preview" caption="caption">
+                            
+                            </a>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
+                    
+                    <?php endif;?>
                 </div>
-                <div class="col-lg-4">
-                    <div class="gallery-card">
-                        <span class="total-images">10 Photos</span>
-                        <a href="#">
-
-                            <img src="<?php echo get_template_directory_uri();?>/images/gallery3.png" class="img-fluid" alt="">
-                        </a>
-                    </div>
-                </div>
+                <?php endwhile; wp_reset_postdata();?>
+                <?php endif;?>
+               
             </div>
             <div class="more-link mt-5 text-center">
-                <a href="#" class="page-btn">View our gallery</a>
+                <?php $gallery_button   = get_field('gallery_button');?>
+                <?php if($gallery_button):
+                    $gallery_button_url     = $gallery_button['url'];
+                    $gallery_button_title   = $gallery_button['title'];
+                    ?>
+                <a href="<?php echo esc_url($gallery_button_url);?>" class="page-btn"><?php echo esc_html($gallery_button_title);?></a>
+                <?php endif;?>
             </div>
         </section>
     </div>
@@ -386,10 +398,16 @@
 <div class="cta">
     <div class="container">
         <section class="cta-sec text-center">
-            <h3>Anything you want to know about Osho Meditation and Events?</h3>
-            <p>If you have any queries regarding the Osho meditation, Osho Maitreya, And Events to be held here in Osho Maitreya, then you can contact us for more information. </p>
+            <h3><?php the_field('contact_title');?></h3>
+            <?php the_field('contact_content');?>
             <div class="more-link mt-5 text-center">
-                <a href="#" class="page-btn dark">Contact us</a>
+                <?php $contact_button = get_field('contact_button');?>
+                <?php if($contact_button):
+                    $contact_button_url = $contact_button['url'];
+                    $contact_button_title = $contact_button['title'];
+                    ?>
+                <a href="<?php echo esc_url($contact_button_url);?>" class="page-btn dark"><?php echo  esc_html($contact_button_title);?></a>
+                <?php endif;?>
             </div>
         </section>
     </div>
