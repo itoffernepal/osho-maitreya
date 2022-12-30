@@ -199,25 +199,28 @@
                 <p><?php the_field('about_osho_maitreya_content');?></p>
             </div>
             <div class="om-slider">
+                <?php if(have_rows('about_osho_maitreya_slider')):?>
+                    <?php while(have_rows('about_osho_maitreya_slider')) : the_row();?>
                 <div class="slide-item">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-img">
-                                <img src="<?php echo get_template_directory_uri();?>/images/slider-img.png" class="slide-img" alt="">
+                                <?php $slider = get_sub_field('image');?>
+                                <?php if(!empty($slider)):?>
+                                <img src="<?php echo esc_url($slider['url']);?>" class="slide-img" alt="<?php echo esc_html($slider['alt']);?>">
+                                <?php endif;?>
                             </div>
                         </div>
                         <div class="slider-content">
                             <div class="slider-text">
-                                <h2>Osho Maitreya for Meditation 1</h2>
-                                <p>Osho Maitreya is a pristine and peaceful space for the spiritually inclined. Seekers
-                                    from world-over, converge here to participate in Meditation retreats and benefit
-                                    from the pulsating energy-field that has built up with the continued practice of
-                                    Meditation.</p>
+                                <h2><?php the_sub_field('title');?></h2>
+                                <?php the_sub_field('content');?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item">
+                <?php endwhile;endif;?>
+                <!-- <div class="slide-item">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-img">
@@ -234,7 +237,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
