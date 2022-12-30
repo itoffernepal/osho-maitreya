@@ -1,6 +1,6 @@
 <?php 
 /*Template Name: About osho page */
-get_header();?>
+get_header('2');?>
 <div class="page-banner" style="background: url(images/page-banner.png);">
     <div class="container">
         <section class="pb-sec pb-2">

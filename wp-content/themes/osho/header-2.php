@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +8,7 @@
 
 <body>
     <div class="site-content">
-        <header>
+        <header class="inner-header">
             <div class="main-menu">
                 <nav id="navbar-main" class="navbar navbar-expand-lg  navbar-light">
                     <div class="container">
@@ -20,7 +19,10 @@
                         ?>
                         <a href="<?php echo site_url(); ?>" class="navbar-brand">
                             <?php if ($image[0]) { ?>
-                                <img src="<?php echo $image[0]; ?>" class="img-fluid" alt="<?php echo get_bloginfo('name'); ?>">
+                                <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
+
+                                <!-- new logo -->
+                                <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png" class="img-fluid" alt="">
                             <?php  } ?>
                         </a>
                         <!--  -->
@@ -54,7 +56,7 @@
                                             <?php
                                             } else {
                                             ?>
-                                                <li class="nav-item has-sub">
+                                                 <li class="nav-item has-sub">
                                                     <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>"><?php echo esc_html($menu_item->title); ?>
                                                     </a>
                                                     <ul class="sub-menu">
