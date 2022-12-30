@@ -1094,3 +1094,9 @@ input:-webkit-autofill {
     top: 100px;
     right: 5%;
 }
+.contact-form .line-img {
+    bottom: 12%;
+}
+.map{
+    z-index: 222;
+}
