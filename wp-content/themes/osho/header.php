@@ -58,15 +58,17 @@
                                                     <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>"><?php echo esc_html($menu_item->title); ?>
                                                     </a>
                                                     <ul class="sub-menu">
-                                                        <li>
-                                                            <?php
+                                                    <?php
                                                             foreach ($child_menu_items as $child) {
                                                             ?>
+                                                        <li>
+                                                            
                                                                 <a href="<?php echo esc_url($child->url); ?>"><?php echo esc_html($child->title); ?></a>
-                                                            <?php
+                                                            
+                                                        </li>
+                                                        <?php
                                                             }
                                                             ?>
-                                                        </li>
                                                     </ul>
                                                 </li>
                                         <?php

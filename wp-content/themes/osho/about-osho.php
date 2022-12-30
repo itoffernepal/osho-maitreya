@@ -1,14 +1,14 @@
 <?php 
 /*Template Name: About osho page */
 get_header();?>
-<div class="page-banner" style="background: url(images/page-banner.png);">
+<div class="page-banner" style="background: url(<?php the_post_thumbnail_url();?>">
     <div class="container">
         <section class="pb-sec pb-2">
-            <h2>Osho</h2>
+            <h2><?php the_title();?></h2>
             <nav aria-label="breadcrumb" class="page-menu">
                 <ul class="breadcrumb">
-                    <li><a href="index.php">Home</a></li>
-                    <li>Osho</li>
+                    <li><a href="<?php echo site_url('/');?>">Home</a></li>
+                    <li><?php the_title();?></li>
                 </ul>
             </nav>
         </section>
@@ -19,7 +19,7 @@ get_header();?>
         <section class="ao-sec">
             <div class="section-intro text-start">
                 <div class="section-title">
-                    <h2>About Osho</h2>
+                    <h2><?php the_title();?></h2>
                 </div>
             </div>
             <div class="row">
