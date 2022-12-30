@@ -1,4 +1,6 @@
-<?php include 'includes/header2.php'; ?>
+<?php 
+/*Template Name: Contact Us page */
+get_header();?>
 <div class="page-banner" style="background: url(images/page-banner.png);">
     <div class="container">
         <section class="pb-sec pb-2">
@@ -91,4 +93,4 @@
 </div>
 
 
-<?php include 'includes/footer.php'; ?>
+<?php get_footer();?>
