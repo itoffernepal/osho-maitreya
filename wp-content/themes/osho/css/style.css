@@ -1027,6 +1027,7 @@ footer{
     font-weight: 600;
     margin-bottom: 10px;
     font-size: 36px;
+    color:var(--color-white);
 }
 
 .page-banner {
@@ -1135,3 +1136,43 @@ input:-webkit-autofill {
     line-height: 14px;
   }
   
+  /* About osho page */
+
+  .ao-highlight p, .quotation{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 34px;
+  }
+  .quotation{
+    background: var(--color-lg-yellow);
+    padding: 35px 25px 35px 100px;
+    max-width: 1050px;
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+  }
+  .quotation:before{
+    content: url(../images/quote-icon.png);
+    position: absolute;
+    top: -15px;
+    left: 25px;
+  }
+  .ao-text p, .om-text p,  .estd-text p,
+  .ss-page, .ss-page p{
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 25px;
+  }
+  .ss-page figure{
+    margin-bottom: 25px;
+  }
+  .estd-text h3{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: var(--font-primary);
+  }
+  .estd-img, .estd-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  } 

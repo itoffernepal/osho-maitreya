@@ -1,11 +1,11 @@
 jQuery(document).ready(function () {
 
     jQuery(".hero-slider, .om-slider").slick({
-        autoplay: false,
+        autoplay: true,
         lazyLoad: "ondemand",
-        autoplaySpeed: 3000,
+        autoplaySpeed: 4000,
         arrows: true,
-        fade:true,
+        // fade:false,
         dots: true,
         dotsClass: 'custom_paging',
 		customPaging: function (slider, i) {
