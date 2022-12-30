@@ -1,6 +1,5 @@
 <?php get_header();?>
 <!-- Banner Section start -->
-
 <div class="hero">
     <section class="hero-sec p-0">
         <div class="hero-banner">
@@ -150,6 +149,7 @@
         <?php endif;?>
     </div>
 </div>
+<h2>this is header section</h2>
 <div class="about position-relative">
 
     <div class="about-img">
