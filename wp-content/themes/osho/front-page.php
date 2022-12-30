@@ -149,6 +149,7 @@
         <?php endif;?>
     </div>
 </div>
+<h2>this is header section</h2>
 <div class="about position-relative">
 
     <div class="about-img">
