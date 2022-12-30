@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
 
     jQuery(".hero-slider, .om-slider").slick({
-        autoplay: true,
+        autoplay: false,
         lazyLoad: "ondemand",
         autoplaySpeed: 3000,
         arrows: true,

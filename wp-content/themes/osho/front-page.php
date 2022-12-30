@@ -244,7 +244,7 @@
                     adopt osho, visiting our events.</p>
             </div>
             <div class="event-brief">
-                <div class="row g-0 align-items-center">
+                <div class="row g-0 ">
                     <div class="col-lg-3">
                         <div class="eb-img">
                             <img src="<?php echo get_template_directory_uri();?>/images/osho.png" class="img-fluid" alt="">
@@ -270,7 +270,7 @@
                                 <li>Laughing-Tears-Silence.</li>
                                 <li>Facilitated by: Osho Maitreya Japan</li>
                             </ul>
-
+                                <a href="#event-form" class="page-btn dark" data-bs-toggle="modal">Book now</a>
                         </div>
                     </div>
                 </div>
@@ -284,6 +284,29 @@
         </section>
     </div>
 </div>
+
+<!-- event modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="event-form" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- event modal close -->
+
 <div class="gallery">
     <div class="container">
         <section class="gallery-sec pt-0">
@@ -296,7 +319,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="gallery-card">
-                        <span class="total-<?php echo get_template_directory_uri();?>/images">10 Photos</span>
+                        <span class="total-images">10 Photos</span>
                         <a href="#">
 
                             <img src="<?php echo get_template_directory_uri();?>/images/gallery1.png" class="img-fluid" alt="">
@@ -305,7 +328,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="gallery-card">
-                        <span class="total-<?php echo get_template_directory_uri();?>/images">10 Photos</span>
+                        <span class="total-images">10 Photos</span>
                         <a href="#">
 
                             <img src="<?php echo get_template_directory_uri();?>/images/gallery2.png" class="img-fluid" alt="">
@@ -314,7 +337,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="gallery-card">
-                        <span class="total-<?php echo get_template_directory_uri();?>/images">10 Photos</span>
+                        <span class="total-images">10 Photos</span>
                         <a href="#">
 
                             <img src="<?php echo get_template_directory_uri();?>/images/gallery3.png" class="img-fluid" alt="">
