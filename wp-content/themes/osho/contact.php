@@ -1,14 +1,17 @@
-<?php 
+<?php
 /*Template Name: Contact Us page */
-get_header();?>
-<div class="page-banner" style="background: url(images/page-banner.png);">
+get_header(); ?>
+<!-- Banner Image -->
+<div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>);">
     <div class="container">
         <section class="pb-sec pb-2">
-            <h2>Contact</h2>
+            <!-- title -->
+            <h2><?php the_title(); ?></h2>
             <nav aria-label="breadcrumb" class="page-menu">
                 <ul class="breadcrumb">
-                    <li><a href="index.php">Home</a></li>
-                    <li>Contact</li>
+                    <!-- links -->
+                    <li><a href="<?php echo site_url('/'); ?>">Home</a></li>
+                    <li><?php the_title(); ?></li>
                 </ul>
             </nav>
         </section>
@@ -19,11 +22,14 @@ get_header();?>
         <section class="cf-sec">
             <div class="form-content">
                 <div class="section-intro text-start">
-                    <h2>Leave us your info</h2>
-                    <p>and we’ll get back to you</p>
+                    <!-- form title -->
+                    <h2><?php the_field('form_title'); ?></h2>
+                    <!-- form subtitle -->
+                    <p><?php the_field('form_subtitle'); ?></p>
                 </div>
-                <form autocomplete="off">
-                <div class="row">
+                <!-- contact form -->
+                <!-- <form autocomplete="off">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="floating-label form-group">
                                 <input class="floating-input" type="text" placeholder=" ">
@@ -59,39 +65,47 @@ get_header();?>
                             <button class="page-btn dark w-auto"> Submit</button>
                         </div>
                     </div>
-                </form>
-
+                </form> -->
+                <?php //echo do_shortcode('[contact-form-7 id="75" title="Contact Form"]');
+                ?>
             </div>
             <div class="map large-pt position-relative">
                 <div class="map-detail">
-                    <h3>Our Location</h3>
-                    <p>About .... miles (south/north/east/west) of ......, Osho Maitreya has blossomed on the outskirts
-                        of ...... offering a clean, green, aesthetic and peaceful environment for those on the inner
-                        journey.</p>
+                    <!-- location title -->
+                    <h3><?php the_field('location_title'); ?></h3>
+                    <!-- location content -->
+                    <?php the_field('location_content'); ?>
                     <div class="footer-content">
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> <span>Japan, 〒630-8392 Nara, Chuincho, １１</span>
+                            <!-- address -->
+                            <li><i class="fas fa-map-marker-alt"></i> <span><?php the_field('address'); ?></span>
                             </li>
-                            <li><i class="fas fa-phone"></i> <span><a href="tel:+81 123 456789">+81 123 456789</a>, <a
-                                        href="tel:+81 123 456780">+81 123 456780</a>, <a href="tel:+81 123 456781">+81
-                                        123 456781</a> </span></li>
-                            <li><i class="fas fa-envelope"></i> <span><a
-                                        href="mailto:contact@oshomaitreya.com">contact@oshomaitreya.com</a></span>
+                            <!-- phone number -->
+                            <li><i class="fas fa-phone"></i>
+                                <span>
+                                    <a href="tel:<?php the_field('phone_1'); ?>"><?php the_field('phone_1'); ?></a>,
+                                    <a href="tel:<?php the_field('phone_2'); ?>"><?php the_field('phone_2'); ?></a>,
+                                    <a href="tel:<?php the_field('phone_3'); ?>"><?php the_field('phone_3'); ?></a> </span>
+                            </li>
+                            <!-- email address -->
+                            <li><i class="fas fa-envelope"></i> <span><a href="mailto:<?php the_field('email'); ?>"><?php the_field('email'); ?></a></span>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.0854218663403!2d135.82953901475867!3d34.67779349195336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001398b9704d609%3A0x2c31a736082aae68!2zMTEgQ2jFq2luY2jFjSwgTmFyYSwgNjMwLTgzOTIsIEphcGFu!5e0!3m2!1sen!2snp!4v1672305371694!5m2!1sen!2snp"
-                    width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- google maps -->
+                <?php the_field('google_map'); ?>
             </div>
         </section>
     </div>
     <div class="line-img">
-                <img src="images/line.png" alt="">
-            </div>
+        <!-- bg image -->
+        <?php $bg = get_field('bg_image'); ?>
+        <?php if (!empty($bg)) :
+        ?>
+            <img src="<?php echo esc_url($bg['url']); ?>" alt="<?php echo esc_html($bg['alt']); ?>">
+        <?php endif; ?>
+    </div>
 </div>
 
-
-<?php get_footer();?>
+<?php get_footer(); ?>
