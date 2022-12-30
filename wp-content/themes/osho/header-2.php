@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php wp_head(); ?>
+</head>
+
+<body>
+    <div class="site-content">
+        <header class="inner-header">
+            <div class="main-menu">
+                <nav id="navbar-main" class="navbar navbar-expand-lg  navbar-light">
+                    <div class="container">
+                        <!-- Header Logo -->
+                        <?php
+                        $custom_logo_id = get_theme_mod('custom_logo');
+                        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+                        ?>
+                        <a href="<?php echo site_url(); ?>" class="navbar-brand">
+                            <?php if ($image[0]) { ?>
+                                <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
+
+                                <!-- new logo -->
+                                <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png" class="img-fluid" alt="">
+                            <?php  } ?>
+                        </a>
+                        <!--  -->
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                            <!-- Header Menu Section -->
+                            <?php
+                            $menu_name = 'primary-menu';
+                            $location = get_nav_menu_locations();
+                            $menu = wp_get_nav_menu_object($location[$menu_name]);
+                            $menuitems = wp_get_nav_menu_items($menu->term_id);
+                            $header_menu_id = get_menu_id('primary-menu');
+
+                            $header_menus = wp_get_nav_menu_items($header_menu_id);
+                            ?>
+                            <?php
+                            if (!empty($header_menus)  && is_array($header_menus)) {
+                            ?>
+                                <ul class="navbar-nav ">
+                                    <?php
+                                    foreach ($header_menus as $menu_item) {
+                                        if (!$menu_item->menu_item_parent) { //checking the item are parent?
+                                            $child_menu_items = get_child_menu_items($header_menus, $menu_item->ID);
+                                            $has_children = !empty($child_menu_items) && is_array($child_menu_items);
+
+                                            if (!$has_children) {
+                                    ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>"><?php echo esc_html($menu_item->title); ?>
+                                                    </a>
+                                                </li>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                 <li class="nav-item has-sub">
+                                                    <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>"><?php echo esc_html($menu_item->title); ?>
+                                                    </a>
+                                                    <ul class="sub-menu">
+                                                    <?php
+                                                            foreach ($child_menu_items as $child) {
+                                                            ?>
+                                                        <li>
+                                                            
+                                                                <a href="<?php echo esc_url($child->url); ?>"><?php echo esc_html($child->title); ?></a>
+                                                           
+                                                        </li>
+                                                        <?php
+                                                            }
+                                                            ?>
+                                                    </ul>
+                                                </li>
+                                        <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                            <?php } ?>
+                            <!-- Header Menu End -->
+                        </div>
+                        <div class="lang text-end ms-4">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/lang-switch.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
