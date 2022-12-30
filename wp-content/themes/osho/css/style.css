@@ -1033,35 +1033,12 @@ footer{
     position: relative;
 }
 
-.form-content .form-label {
-    position: absolute;
-    left: 15px;
-    top: 12px;
-    font-size: 18px;
-    -webkit-transition: -webkit-transform .2s ease-in-out;
-    transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
-}
-
-.form-content .form-input:focus+.form-label,
-.form-content .form-input:valid+.form-label {
-    -webkit-transform: translateY(-24px);
-    transform: translateY(-24px);
-    font-size: 14px;
-    font-weight: 400;
-    margin: 0;
-    background: var(--color-white);
-    padding: 5px;
-    line-height: 14px;
-}
-
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     background: transparent !important;
 }
 
-/* .form-content .form-input:not(:placeholder-shown) + label{
+/* .form-content .form-input:not(:placeholder-shown) ~ label{
   -webkit-transform: translateY(-24px);
     transform: translateY(-24px);
     font-size: 14px;
@@ -1069,14 +1046,14 @@ input:-webkit-autofill {
     bottom: 20px;
 } */
 
-.cf-sec .section-intro h2 {
+.cf-sec .section-intro h2{
     color: var(--color-primary);
     font-size: 36px;
     font-weight: 600;
     margin: 0;
 }
 
-.cf-sec .section-intro p {
+.cf-sec .section-intro p{
     font-size: 20px;
     font-weight: 500;
     color: #A0A0A0;
@@ -1114,3 +1091,47 @@ input:-webkit-autofill {
 .map{
     z-index: 222;
 }
+
+.form-popup .section-intro h2 {
+    font-size: 24px;
+    color:var(--color-primary);
+    font-weight:600;
+    margin-bottom: 10px;
+}
+.form-popup .section-intro p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #A0A0A0;
+}
+
+
+.floating-label { 
+    position:relative; 
+    margin-bottom:20px; 
+  }
+  
+  label {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:10px;
+    top:12px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label,
+  .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    background: var(--color-white);
+    padding: 5px;
+    line-height: 14px;
+  }
+  

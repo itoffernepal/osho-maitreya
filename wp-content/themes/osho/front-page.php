@@ -6,7 +6,7 @@
             <div class="hero-slider">
                 <!-- Banner Image -->
                 <?php if(have_rows('banner_image')):?>
-                    <?php while(have_rows('banner_image')) : the_row();
+                <?php while(have_rows('banner_image')) : the_row();
                     $image1 = get_sub_field('image_1');
                     $image2 = get_sub_field('image_2');
                     $image3 = get_sub_field('image_3');
@@ -34,7 +34,8 @@
                             $button_url = $button['url'];
                             $button_title = $button['title'];
                             ?>
-                        <a href="<?php echo esc_url($button_url);?>" class="page-btn"><?php echo esc_html($button_title);?></a>
+                        <a href="<?php echo esc_url($button_url);?>"
+                            class="page-btn"><?php echo esc_html($button_title);?></a>
                         <?php endif;?>
                     </div>
                     <div class="scroll-btn text-center">
@@ -136,8 +137,8 @@
                     $audio_button_title = $audio_button['title'];
                     ?>
                 <a href="<?php echo esc_url($audio_button_url);?>" class="page-btn dark mt-5">
-                <?php echo esc_html($audio_button_title);?>
-            </a>
+                    <?php echo esc_html($audio_button_title);?>
+                </a>
                 <?php endif;?>
             </div>
         </section>
@@ -157,8 +158,9 @@
                 <div class="abt-video position-relative h-100">
                     <?php $about_osho_image = get_field('about_osho_image');?>
                     <?php if(!empty($about_osho_image)):?>
-                    <img src="<?php echo esc_url($about_osho_image['url']);?>" class="img-fluid" alt="<?php echo esc_html($about_osho_image['alt']);?>">
-                        <?php endif;?>
+                    <img src="<?php echo esc_url($about_osho_image['url']);?>" class="img-fluid"
+                        alt="<?php echo esc_html($about_osho_image['alt']);?>">
+                    <?php endif;?>
                 </div>
             </div>
         </div>
@@ -181,7 +183,8 @@
                             $about_osho_button_url = $about_osho_button['url'];
                             $about_osho_button_title = $about_osho_button['title'];
                             ?>
-                        <a href="<?php echo esc_url($about_osho_button_url);?>" class="page-btn mt-5"><?php echo esc_html($about_osho_button_title);?></a>
+                        <a href="<?php echo esc_url($about_osho_button_url);?>"
+                            class="page-btn mt-5"><?php echo esc_html($about_osho_button_title);?></a>
                         <?php endif;?>
                     </div>
                 </div>
@@ -200,14 +203,15 @@
             </div>
             <div class="om-slider">
                 <?php if(have_rows('about_osho_maitreya_slider')):?>
-                    <?php while(have_rows('about_osho_maitreya_slider')) : the_row();?>
+                <?php while(have_rows('about_osho_maitreya_slider')) : the_row();?>
                 <div class="slide-item">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-img">
                                 <?php $slider = get_sub_field('image');?>
                                 <?php if(!empty($slider)):?>
-                                <img src="<?php echo esc_url($slider['url']);?>" class="slide-img" alt="<?php echo esc_html($slider['alt']);?>">
+                                <img src="<?php echo esc_url($slider['url']);?>" class="slide-img"
+                                    alt="<?php echo esc_html($slider['alt']);?>">
                                 <?php endif;?>
                             </div>
                         </div>
@@ -269,7 +273,8 @@
                 <div class="row g-0 ">
                     <div class="col-lg-3">
                         <div class="eb-img">
-                            <img src="<?php echo get_template_directory_uri();?>/images/osho.png" class="img-fluid" alt="">
+                            <img src="<?php echo get_template_directory_uri();?>/images/osho.png" class="img-fluid"
+                                alt="">
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -292,13 +297,146 @@
                                 <li>Laughing-Tears-Silence.</li>
                                 <li>Facilitated by: Osho Maitreya Japan</li>
                             </ul>
-                                <a href="#event-form" class="page-btn dark" data-bs-toggle="modal">Book now</a>
+                            <a href="#event-form" class="page-btn dark" data-bs-toggle="modal">Book now</a>
                         </div>
                     </div>
                 </div>
                 <div class="line-img">
                     <img src="<?php echo get_template_directory_uri();?>/images/line2.png" alt="">
                 </div>
+
+
+                
+<!-- event modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade form-popup" id="event-form" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body form-content p-4">
+                <div class="section-intro text-start mb-4">
+                    <h2>Register for Event: Osho Meditative Therapy</h2>
+                    <p>Please enter information to submit your query for event<br>Osho Meditative Therapy(2023).</p>
+                </div>
+
+                <form autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>Last Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>Sannyas Name (If you Have)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="email" placeholder=" ">
+                                <label>Your Email</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="number" placeholder=" ">
+                                <label>Phone Number</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
+                                    value="">
+                                    <option value=""></option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Third Gender</option>
+                                </select>
+                                <label>Select Gender</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label form-group">
+                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
+
+                                <label>Experience with osho</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>Address Line 1</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>Address Line 2</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>City</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>State</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="number" placeholder=" ">
+                                <label>ZIP</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label form-group">
+                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
+                                    value="">
+                                    <option value=""></option>
+                                    <option value="1">Country 1</option>
+                                    <option value="2">Country 2</option>
+                                    <option value="3">Country 3</option>
+                                </select>
+                                <label>Country</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label form-group">
+                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
+
+                                <label>Message</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="page-btn dark w-auto"> Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- event modal close -->
+
+
+
             </div>
             <div class="more-link mt-5 text-center">
                 <?php $upcoming_button = get_field('upcoming_event_button');?>
@@ -313,27 +451,6 @@
     </div>
 </div>
 
-<!-- event modal -->
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="event-form" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- event modal close -->
 
 <div class="gallery">
     <div class="container">
@@ -357,6 +474,7 @@
                  ?>
                 <div class="col-lg-4">
 
+<<<<<<< HEAD
                 <?php 
                 $images = get_field('add_images');
                 if( $images ): ?>
@@ -367,6 +485,30 @@
                         
                         <a href="<?php the_post_thumbnail_url();?>" data-fancybox="image-preview" caption="caption">
                             <img src="<?php the_post_thumbnail_url();?>" class="img-fluid" alt="">
+=======
+                            <img src="<?php echo get_template_directory_uri();?>/images/gallery1.png" class="img-fluid"
+                                alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="gallery-card">
+                        <span class="total-images">10 Photos</span>
+                        <a href="#">
+
+                            <img src="<?php echo get_template_directory_uri();?>/images/gallery2.png" class="img-fluid"
+                                alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="gallery-card">
+                        <span class="total-images">10 Photos</span>
+                        <a href="#">
+
+                            <img src="<?php echo get_template_directory_uri();?>/images/gallery3.png" class="img-fluid"
+                                alt="">
+>>>>>>> 5c25aa283e629d17ff4d5c0c78b9bbb6a8baeba9
                         </a>
                         <?php foreach( $images as $image ): ?>
                         <div class="more-images"  style="display:none">
@@ -398,8 +540,14 @@
 <div class="cta">
     <div class="container">
         <section class="cta-sec text-center">
+<<<<<<< HEAD
             <h3><?php the_field('contact_title');?></h3>
             <?php the_field('contact_content');?>
+=======
+            <h3>Anything you want to know about Osho Meditation and Events?</h3>
+            <p>If you have any queries regarding the Osho meditation, Osho Maitreya, And Events to be held here in Osho
+                Maitreya, then you can contact us for more information. </p>
+>>>>>>> 5c25aa283e629d17ff4d5c0c78b9bbb6a8baeba9
             <div class="more-link mt-5 text-center">
                 <?php $contact_button = get_field('contact_button');?>
                 <?php if($contact_button):
@@ -414,5 +562,3 @@
 </div>
 
 <?php get_footer();?>
-
-

@@ -23,35 +23,36 @@ get_header();?>
                     <p>and we’ll get back to you</p>
                 </div>
                 <form autocomplete="off">
-                    <div class="row">
+                <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" id="firstname" class="form-input" autocomplete="off" required>
-                                <label for="firstname" class="form-label">First Name</label>
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>First Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" id="lastname" class="form-input" autocomplete="off" required>
-                                <label for="lastname" class="form-label">Last Name</label>
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="text" placeholder=" ">
+                                <label>Last Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="number" id="phone" class="form-input" autocomplete="off" required>
-                                <label for="phone" class="form-label">Your Phone Number</label>
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="number" placeholder=" ">
+                                <label>Phone Number</label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" id="email" class="form-input" autocomplete="off" required>
-                                <label for="email" class="form-label">Your Email</label>
+                            <div class="floating-label form-group">
+                                <input class="floating-input" type="email" placeholder=" ">
+                                <label>Your Email</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea id="textarea" class="form-input" autocomplete="off" required></textarea>
-                                <label for="textarea" class="form-label">Your Email</label>
+                            <div class="floating-label form-group">
+                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
+
+                                <label>Message</label>
                             </div>
                         </div>
                         <div class="col-md-12">
