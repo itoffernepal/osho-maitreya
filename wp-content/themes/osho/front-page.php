@@ -474,18 +474,6 @@
                  ?>
                 <div class="col-lg-4">
 
-<<<<<<< HEAD
-                <?php 
-                $images = get_field('add_images');
-                if( $images ): ?>
-                
-                    <div class="gallery-card">
-                    <?php $gallery_rows= get_field('add_images'); ?>
-                        <span class="total-images"><?php echo $total_images = count($gallery_rows); ?> Photos</span>
-                        
-                        <a href="<?php the_post_thumbnail_url();?>" data-fancybox="image-preview" caption="caption">
-                            <img src="<?php the_post_thumbnail_url();?>" class="img-fluid" alt="">
-=======
                             <img src="<?php echo get_template_directory_uri();?>/images/gallery1.png" class="img-fluid"
                                 alt="">
                         </a>
@@ -508,7 +496,6 @@
 
                             <img src="<?php echo get_template_directory_uri();?>/images/gallery3.png" class="img-fluid"
                                 alt="">
->>>>>>> 5c25aa283e629d17ff4d5c0c78b9bbb6a8baeba9
                         </a>
                         <?php foreach( $images as $image ): ?>
                         <div class="more-images"  style="display:none">
