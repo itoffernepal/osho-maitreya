@@ -60,14 +60,12 @@ get_header('2');?>
                                     <?php echo get_the_date('Y');?></li>
                             </ul>
                             <h2><?php the_title();?></h2>
-                            <?php $counter = 1;?>
-                            <?php if(have_rows('add_playlist')):
-                                while(have_rows('add_playlist')) : the_row();?>
-                            <?php if($counter == 1); ?>
-                            <span class="total-chapter"><?php echo count( get_field('add_playlist') );?> Chapters</span>
-                            <?php break;?>
-
-                            <?php endwhile;endif;?>
+                        
+                           
+                           
+                            
+                            <span class="total-chapter">1 Chapters</span>
+                            
                         </div>
                     </a>
                 </div>
