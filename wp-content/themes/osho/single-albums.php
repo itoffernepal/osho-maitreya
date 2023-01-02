@@ -15,6 +15,13 @@ get_header('2');?>
         </section>
     </div>
 </div>
-<?php the_content();?>
+<div class="playlist">
+    <div class="container">
+        <section class="playlist-sec">
+        <?php the_content();?>
+        </section>
+    </div>
+</div>
+
 <?php endwhile; wp_reset_postdata();?>
 <?php get_footer();?>

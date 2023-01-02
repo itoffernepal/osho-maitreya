@@ -37,7 +37,8 @@ get_header('2');?>
                 </div>
             </div>
             </div>
-            <div class="ab-slider">
+            <div class="ab-lists">
+                <div class="row justify-content-center">
                 <?php $albums = array(
                     'post_type'     => 'albums',
                     'posts_per_page'=> -1,
@@ -48,7 +49,7 @@ get_header('2');?>
                 if($album_query->have_posts()):
                     while($album_query->have_posts()) : $album_query->the_post();
                 ?>
-
+                <div class="column">
                 <div class="slide-item ab-card">
                     <a href="<?php the_permalink();?>">
                         <div class="ab-img">
@@ -69,9 +70,12 @@ get_header('2');?>
                         </div>
                     </a>
                 </div>
+                </div>
+               
 
                 <?php endwhile;wp_reset_postdata();?>
                 <?php endif;?>
+                </div>
             </div>
             
         </section>
