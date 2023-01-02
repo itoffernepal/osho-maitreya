@@ -58,21 +58,42 @@
                 <p><?php the_field('audiobook_content'); ?></p>
             </div>
             <div class="ab-slider">
+                <?php $playlist = array(
+                    'post_type'     => 'playlists',
+                    'posts_per_page'=> -1,
+                    'orderby'       => 'date',
+                    'order'         => 'DES',
+                );
+                $playlist_query = new WP_Query($playlist);
+                if($playlist_query->have_posts()):
+                    while($playlist_query->have_posts()) : $playlist_query->the_post();
+                ?>
+                
                 <div class="slide-item ab-card">
-                    <a href="#">
+                    <a href="<?php the_permalink();?>">
                         <div class="ab-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ab.png" class="img-fluid">
+                            <img src="<?php the_post_thumbnail_url();?>" class="img-fluid">
                         </div>
                         <div class="ab-brief">
                             <ul class="meta-tag">
-                                <li>November 28, 2022</li>
+                                <li><?php echo get_the_date('F')?> <?php echo get_the_date('d');?> <?php echo get_the_date('Y');?></li>
                             </ul>
-                            <h2>Communism: The Pinnacle of Capitalism</h2>
-                            <span class="total-chapter">17 Chapters</span>
+                            <h2><?php the_title();?></h2>
+                            <?php $counter = 1;?>
+                            <?php if(have_rows('add_playlist')):
+                                while(have_rows('add_playlist')) : the_row();?>
+                                <?php if($counter == 1); ?>
+                            <span class="total-chapter"><?php echo count( get_field('add_playlist') );?> Chapters</span>
+                            <?php break;?>
+                            
+                            <?php endwhile;endif;?>
                         </div>
                     </a>
                 </div>
-                <div class="slide-item ab-card">
+                
+                <?php endwhile;wp_reset_postdata();?>
+                <?php endif;?>
+                <!-- <div class="slide-item ab-card">
                     <a href="#">
                         <div class="ab-img">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/ab1.png" class="img-fluid">
@@ -127,7 +148,7 @@
                             <span class="total-chapter">17 Chapters</span>
                         </div>
                     </a>
-                </div>
+                </div> -->
 
             </div>
             <div class="text-center more-link">

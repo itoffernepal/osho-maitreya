@@ -283,3 +283,59 @@ function event_custom_post_type() {
   }
 
   add_action( 'init', 'event_custom_post_type', 0 );
+
+//   *******************************************************************************
+// Playlist CPT
+function playlist_custom_post_type() {
+  
+    // Set UI labels for Custom Post Type
+        $labels = array(
+            'name'                => _x( 'Playlists', 'Post Type General Name', 'osho' ),
+            'singular_name'       => _x( 'Playlist', 'Post Type Singular Name', 'osho' ),
+            'menu_name'           => __( 'Playlists', 'osho' ),
+            'parent_item_colon'   => __( 'Parent Movie', 'osho' ),
+            'all_items'           => __( 'All Playlists', 'osho' ),
+            'view_item'           => __( 'View Playlist', 'osho' ),
+            'add_new_item'        => __( 'Add New Playlist', 'osho' ),
+            'add_new'             => __( 'Add New', 'osho' ),
+            'edit_item'           => __( 'Edit Playlist', 'osho' ),
+            'update_item'         => __( 'Update Playlist', 'osho' ),
+            'search_items'        => __( 'Search Playlist', 'osho' ),
+            'not_found'           => __( 'Not Found', 'osho' ),
+            'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
+        );
+          
+    // Set other options for Custom Post Type
+          
+        $args = array(
+            'label'               => __( 'playlists', 'osho' ),
+            'description'         => __( 'Playlist news and reviews', 'osho' ),
+            'labels'              => $labels,
+            // Features this CPT supports in Post Editor
+            'supports'            => array( 'title','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            // You can associate this CPT with a taxonomy or custom taxonomy. 
+            'taxonomies'          => array( 'genres' ),
+           
+            'hierarchical'        => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_nav_menus'   => true,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => 5,
+            'menu_icon'           => 'dashicons-bell',
+            'can_export'          => true,
+            'has_archive'         => true,
+            'exclude_from_search' => false,
+            'publicly_queryable'  => true,
+            'capability_type'     => 'post',
+            'show_in_rest' => true,
+      
+        );
+          
+        // Registering your Custom Post Type
+        register_post_type( 'playlists', $args );
+      
+    }
+  
+    add_action( 'init', 'playlist_custom_post_type', 0 );
