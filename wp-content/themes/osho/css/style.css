@@ -605,6 +605,12 @@ header {
     height: 35px;
     border-radius: 50%;
 }
+.ab-slider{
+    display: none ;
+}
+.ab-slider.slick-initialized {
+     display: block; 
+    }
 
 .banner-content {
     max-width: 90%;
@@ -1250,6 +1256,13 @@ input:-webkit-autofill {
     margin-left: 12px;
     color: var(--color-primary);
   }
+
+  /* Audio books page */
+  .ab-lists .row .column{
+    flex: 0 0 20% ;
+    margin-bottom: 25px;
+ }
+
 
   /* sticky nav */
 
