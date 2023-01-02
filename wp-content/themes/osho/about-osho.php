@@ -20,7 +20,7 @@ get_header('2'); ?>
             <div class="section-intro text-start">
                 <div class="section-title">
                     <h2>
-                        <<?php the_field('title'); ?>< /h2>
+                        <?php the_field('title'); ?> </h2>
                 </div>
             </div>
             <div class="row">

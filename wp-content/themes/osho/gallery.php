@@ -14,9 +14,9 @@ get_header('2');?>
         </section>
     </div>
 </div>
-<div class="gallery">
+<div class="all-gallery">
     <div class="container">
-        <section class="gallery-sec pt-0">
+        <section class="all-gallery-sec pt-0">
             <div class="section-intro">
                 <div class="section-title">
                     <h2><?php the_field('gallery_title'); ?></h2>

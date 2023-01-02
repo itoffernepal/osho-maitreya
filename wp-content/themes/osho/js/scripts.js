@@ -48,13 +48,13 @@ jQuery(document).ready(function () {
 
 
     // Fixed header.
-    // $(window).scroll(function () {
-    //     if ($(this).scrollTop() >= $(".main-menu").height()) {
-    //         $(".main-menu").addClass("sticky");
-    //     } else {
-    //         $(".main-menu").removeClass("sticky");
-    //     }
-    // });
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= $(".main-menu").height()) {
+            $(".main-menu").addClass("sticky");
+        } else {
+            $(".main-menu").removeClass("sticky");
+        }
+    });
 
      // Implement go to top.
      var $scroll_obj = jQuery("#btn-scrollup1");
