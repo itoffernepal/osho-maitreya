@@ -12,21 +12,42 @@ get_header('2');?>
                     while($playlist_query->have_posts()) : $playlist_query->the_post();
                 ?>
                 
-           
                 <?php
 
-// Start a loop to display all the songs
-while ( have_rows('add_playlist') ) : the_row();
+// Check if the repeater field has rows of data
+if( have_rows('add_playlist') ):
 
-    // Get the MP3 file for the current song
-    $mp3_file = get_sub_field('file');
+ 	// Loop through the rows of data
+    while ( have_rows('add_playlist') ) : the_row(); ?>
 
-    // Display the audio player for the song
-    echo wp_audio_shortcode( array( 'src' => $mp3_file ) );
+        <?php // Display the MP3 file ?>
+       <?php $mp3_file = get_sub_field('audio');
+        echo '<audio src="' . $mp3_file['url'] . '" controls></audio>'; ?>
 
-endwhile;
+       <?php  // Display the title ?>
+       <?php  $title = get_sub_field('title');
+        echo '<h3>' . $title . '</h3>';?>
+
+        <?php // Display the image ?>
+       <?php $image = get_sub_field('cover_photo'); ?>
+       
+        <?php if(!empty($image)): ?>
+            
+        <img src="<?php echo esc_url($image['url']);?>" alt="<?php echo esc_attr($image['alt']);?>"><br><br>
+        <?php endif; ?>
+
+     <?php endwhile; ?>
+
+<?php else : ?>
+
+    // No rows found
+
+<?php endif;
 
 ?>
+
+
+
                         </div>
                     </a>
                 </div>
