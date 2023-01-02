@@ -21,6 +21,7 @@
                         <a href="<?php echo site_url(); ?>" class="navbar-brand">
                             <?php if ($image[0]) { ?>
                                 <img src="<?php echo $image[0]; ?>" class="img-fluid" alt="<?php echo get_bloginfo('name'); ?>">
+                                <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png" class="img-fluid on-hover" alt="">
                             <?php  } ?>
                         </a>
                         <!--  -->
