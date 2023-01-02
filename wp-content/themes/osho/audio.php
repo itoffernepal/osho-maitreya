@@ -13,20 +13,20 @@ get_header('2');?>
                 ?>
                 
            
-                            <?php if(have_rows('add_playlist')):
-                                while(have_rows('add_playlist')) : the_row();?>
-                               
-                            
-                            <?php the_sub_field('title');?>
+                <?php
 
-                            <?php
-$file = get_sub_field('audio');
-if( $file ): ?>
-    <a href="<?php echo $file['url']; ?>"><?php echo $file['filename']; ?></a><br>
-<?php endif; ?>
-                           
-                            
-                            <?php endwhile;endif;?>
+// Start a loop to display all the songs
+while ( have_rows('add_playlist') ) : the_row();
+
+    // Get the MP3 file for the current song
+    $mp3_file = get_sub_field('file');
+
+    // Display the audio player for the song
+    echo wp_audio_shortcode( array( 'src' => $mp3_file ) );
+
+endwhile;
+
+?>
                         </div>
                     </a>
                 </div>
