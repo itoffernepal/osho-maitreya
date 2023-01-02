@@ -1264,6 +1264,34 @@ input:-webkit-autofill {
  }
 
 
+ /* single audio page */
+
+ .ai-with-typography.ai-wrap{
+    background-color:#752A3A;
+ }
+ .ai-wrap .ai-track:hover, .ai-wrap .ai-track.ai-track-active,
+ .ai-wrap .ai-audio-control,
+ .ai-wrap .ai-audio-control:hover, .ai-wrap .ai-audio-control:focus,
+ .ai-wrap .ai-track-progress,
+ .ai-wrap .ai-track-progress,
+ .ai-wrap .ai-volume-bar.ai-volume-bar-active::before,
+ .ai-wrap .ai-btn.ai-btn-active,
+ .ai-wrap .ai-btn:hover{
+    background-color: #993B51;
+ }
+ .ai-wrap .ai-track, .ai-wrap .ai-track-no-thumb{
+    background-color:#602230;
+}
+.ai-wrap .ai-track-no-thumb.ai-track-thumb{
+    line-height: 40px;
+}
+.ai-wrap .ai-btn-repeat svg{
+    top: 0;
+}
+.ai-wrap .ai-btn{
+    background-color: rgb(62 62 62 / 45%);
+}
+
   /* sticky nav */
 
 .main-menu.sticky {

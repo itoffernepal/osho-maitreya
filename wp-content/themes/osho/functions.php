@@ -256,7 +256,7 @@ function event_custom_post_type() {
           'description'         => __( 'Event news and reviews', 'osho' ),
           'labels'              => $labels,
           // Features this CPT supports in Post Editor
-          'supports'            => array( 'title','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+          'supports'            => array( 'title','editor','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
           // You can associate this CPT with a taxonomy or custom taxonomy. 
           'taxonomies'          => array( 'genres' ),
          
@@ -285,22 +285,22 @@ function event_custom_post_type() {
   add_action( 'init', 'event_custom_post_type', 0 );
 
 //   *******************************************************************************
-// Playlist CPT
-function playlist_custom_post_type() {
+// Album CPT
+function album_custom_post_type() {
   
     // Set UI labels for Custom Post Type
         $labels = array(
-            'name'                => _x( 'Playlists', 'Post Type General Name', 'osho' ),
-            'singular_name'       => _x( 'Playlist', 'Post Type Singular Name', 'osho' ),
-            'menu_name'           => __( 'Playlists', 'osho' ),
+            'name'                => _x( 'Albums', 'Post Type General Name', 'osho' ),
+            'singular_name'       => _x( 'Album', 'Post Type Singular Name', 'osho' ),
+            'menu_name'           => __( 'Albums', 'osho' ),
             'parent_item_colon'   => __( 'Parent Movie', 'osho' ),
-            'all_items'           => __( 'All Playlists', 'osho' ),
-            'view_item'           => __( 'View Playlist', 'osho' ),
-            'add_new_item'        => __( 'Add New Playlist', 'osho' ),
+            'all_items'           => __( 'All Albums', 'osho' ),
+            'view_item'           => __( 'View Album', 'osho' ),
+            'add_new_item'        => __( 'Add New Album', 'osho' ),
             'add_new'             => __( 'Add New', 'osho' ),
-            'edit_item'           => __( 'Edit Playlist', 'osho' ),
-            'update_item'         => __( 'Update Playlist', 'osho' ),
-            'search_items'        => __( 'Search Playlist', 'osho' ),
+            'edit_item'           => __( 'Edit Album', 'osho' ),
+            'update_item'         => __( 'Update Album', 'osho' ),
+            'search_items'        => __( 'Search Album', 'osho' ),
             'not_found'           => __( 'Not Found', 'osho' ),
             'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
         );
@@ -308,11 +308,11 @@ function playlist_custom_post_type() {
     // Set other options for Custom Post Type
           
         $args = array(
-            'label'               => __( 'playlists', 'osho' ),
-            'description'         => __( 'Playlist news and reviews', 'osho' ),
+            'label'               => __( 'albums', 'osho' ),
+            'description'         => __( 'Album news and reviews', 'osho' ),
             'labels'              => $labels,
             // Features this CPT supports in Post Editor
-            'supports'            => array( 'title','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'supports'            => array( 'title','editor','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
             // You can associate this CPT with a taxonomy or custom taxonomy. 
             'taxonomies'          => array( 'genres' ),
            
@@ -322,8 +322,8 @@ function playlist_custom_post_type() {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => true,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 5,
-            'menu_icon'           => 'dashicons-bell',
+            'menu_position'       => 25,
+            'menu_icon'           => 'dashicons-playlist-audio',
             'can_export'          => true,
             'has_archive'         => true,
             'exclude_from_search' => false,
@@ -334,8 +334,8 @@ function playlist_custom_post_type() {
         );
           
         // Registering your Custom Post Type
-        register_post_type( 'playlists', $args );
+        register_post_type( 'albums', $args );
       
     }
   
-    add_action( 'init', 'playlist_custom_post_type', 0 );
+    add_action( 'init', 'album_custom_post_type', 0 );
