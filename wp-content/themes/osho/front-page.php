@@ -58,15 +58,15 @@
                 <p><?php the_field('audiobook_content'); ?></p>
             </div>
             <div class="ab-slider">
-                <?php $playlist = array(
-                    'post_type'     => 'playlists',
+            <?php $albums = array(
+                    'post_type'     => 'albums',
                     'posts_per_page'=> -1,
                     'orderby'       => 'date',
                     'order'         => 'DES',
                 );
-                $playlist_query = new WP_Query($playlist);
-                if($playlist_query->have_posts()):
-                    while($playlist_query->have_posts()) : $playlist_query->the_post();
+                $album_query = new WP_Query($albums);
+                if($album_query->have_posts()):
+                    while($album_query->have_posts()) : $album_query->the_post(); global $post;
                 ?>
                 
                 <div class="slide-item ab-card">
@@ -76,17 +76,27 @@
                         </div>
                         <div class="ab-brief">
                             <ul class="meta-tag">
-                                <li><?php echo get_the_date('F')?> <?php echo get_the_date('d');?> <?php echo get_the_date('Y');?></li>
+                                <li><?php echo get_the_date('F')?> <?php echo get_the_date('d');?>
+                                    <?php echo get_the_date('Y');?></li>
                             </ul>
                             <h2><?php the_title();?></h2>
-                            <?php $counter = 1;?>
-                            <?php if(have_rows('add_playlist')):
-                                while(have_rows('add_playlist')) : the_row();?>
-                                <?php if($counter == 1); ?>
-                            <span class="total-chapter"><?php echo count( get_field('add_playlist') );?> Chapters</span>
-                            <?php break;?>
+                            <!-- <span class="total-chapter">1 Chapters</span>  -->
+                            <?php
+                            $playlists = get_field('album_playlist', $post->ID);
+                            $total_tracks = 0;
+                            if (isset($playlists) && !empty($playlists)) {
                             
-                            <?php endwhile;endif;?>
+                            for ($i = 0; $i < count($playlists); $i++) {
+                                $tracks = get_post_meta($playlists[$i], '_audioigniter_tracks', true);
+
+                                
+                                if (isset($tracks) && !empty($tracks)) {
+                                $total_tracks += count($tracks); 
+                                }
+                            }
+                            }
+                            echo '<span class="total-chapter">' . $total_tracks . ' Chapters</span>';
+                            ?>
                         </div>
                     </a>
                 </div>
@@ -466,46 +476,9 @@
                 </div>
                 <?php the_field('gallery_content'); ?>
             </div>
-            <div class="row">
-                <?php $gallery = array(
-                    'post_type'         => 'galleries',
-                    'posts_per_page'    => 3,
-                    'orderby'           => 'date',
-                    'order'             => 'DES',
-                );
-                $gallery_query = new WP_Query($gallery);
-                if ($gallery_query->have_posts()) :
-                    while ($gallery_query->have_posts()) : $gallery_query->the_post();
-                ?>
-                        <div class="col-lg-4">
-
-                            <?php
-                            $images = get_field('add_images');
-                            if ($images) : ?>
-
-                                <div class="gallery-card">
-                                    <?php $gallery_rows = get_field('add_images'); ?>
-                                    <span class="total-images"><?php echo $total_images = count($gallery_rows); ?> Photos</span>
-
-                                    <a href="<?php the_post_thumbnail_url(); ?>" data-fancybox="image-preview" caption="caption">
-                                        <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid" alt="">
-                                    </a>
-                                    <?php foreach ($images as $image) : ?>
-                                        <div class="more-images" style="display:none">
-                                            <a href="<?php echo esc_url($image['url']); ?>" data-fancybox="image-preview" caption="caption">
-
-                                            </a>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-
-                            <?php endif; ?>
-                        </div>
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
-                <?php endif; ?>
-
-            </div>
+            <!-- Gallery Section -->
+            <?php get_template_part('pagetemplate/content','gallery');?>
+            <!-- end -->
             <div class="more-link mt-5 text-center">
                 <?php $gallery_button   = get_field('gallery_button'); ?>
                 <?php if ($gallery_button) :
