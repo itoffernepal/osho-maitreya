@@ -30,10 +30,11 @@ get_header('2');?>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group text-end">
+                    <!-- <div class="form-group text-end">
                     <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search...">
-                    </div>
+                    </div> -->
+                    <?php get_search_form();?>
                 </div>
             </div>
             </div>
@@ -47,7 +48,7 @@ get_header('2');?>
                 );
                 $album_query = new WP_Query($albums);
                 if($album_query->have_posts()):
-                    while($album_query->have_posts()) : $album_query->the_post();
+                    while($album_query->have_posts()) : $album_query->the_post(); global $post;
                 ?>
                 <div class="column">
                 <div class="slide-item ab-card">
@@ -61,18 +62,19 @@ get_header('2');?>
                                     <?php echo get_the_date('Y');?></li>
                             </ul>
                             <h2><?php the_title();?></h2>
-                        
-                           
-                           
-                            
-                            <span class="total-chapter">1 Chapters</span>
-                            
+                            <!-- <span class="total-chapter">1 Chapters</span>  -->
+                            <?php $playlists = get_field('album_playlist',$post->ID);?>
+                            <?php if(isset($playlists) && !empty($playlists)):?>
+                                <?php $tracks = get_post_meta($playlists[0],'_audioigniter_tracks',true);?>
+                                <?php  if(isset($tracks) &&  !empty($tracks)):?>
+                                    <?php //$unserliazedTracks = unserialize($tracks);?>
+                                    <?php echo count($tracks);?> Chapters
+                                <?php endif;?>
+                            <?php endif;?>
                         </div>
                     </a>
                 </div>
                 </div>
-               
-
                 <?php endwhile;wp_reset_postdata();?>
                 <?php endif;?>
                 </div>

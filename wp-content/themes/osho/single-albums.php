@@ -17,8 +17,35 @@ get_header('2');?>
 </div>
 <div class="playlist">
     <div class="container">
-        <section class="playlist-sec">
-        <?php the_content();?>
+        <section class="playlist-sec">       
+
+        <?php
+
+// Get the related posts
+$related_posts = get_field('album_playlist');
+$i=1;
+if ($related_posts) {
+  
+  foreach ($related_posts as $post) {
+    if($i < 2){
+    setup_postdata($post); 
+    $related_id = get_the_ID(); // Get the ID of the related post
+    $related_title = get_the_title(); // Get the title of the related post
+    $shortcode = do_shortcode('[ai_playlist id="' . $related_id . '"]'); // Create the shortcode for the related post's ID
+    echo '<h3>' . $related_title . '</h3>'; // Output the title of the related post
+    echo $shortcode; // Output the shortcode
+    $i++;
+    }
+  }
+  wp_reset_postdata(); // Reset the post data
+}
+
+?>
+
+
+
+
+
         </section>
     </div>
 </div>
