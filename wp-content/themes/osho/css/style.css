@@ -118,7 +118,7 @@ a:focus {
     outline: unset;
 }
 
-.page-btn {
+.page-btn, .send {
     color: var(--color-black);
     position: relative;
     overflow: hidden;
@@ -134,15 +134,19 @@ a:focus {
     border-radius: 5px;
     background: var(--color-secondary);
     min-width: 175px;
+    width: auto;
 }
 
-.page-btn.dark {
+.page-btn.dark, .send {
     color: var(--color-white);
     background: var(--color-primary);
+    width: auto;
 }
 
 .page-btn:before,
-.page-btn:after {
+.page-btn:after,
+.send:after,
+.send:before {
     content: "";
     width: 130px;
     height: 100px;
@@ -155,30 +159,32 @@ a:focus {
     transition: 0.4s;
 }
 
-.page-btn:after {
+.page-btn:after, .send:after{
     right: -85px;
     top: 20px;
     background: rgb(128 0 0 / 20%);
     transition: 0.7s;
 }
 
-.page-btn.dark:before {
+.page-btn.dark:before, .send:before {
     background: #921E00;
 }
 
-.page-btn.dark:after {
+.page-btn.dark:after, .send:after {
     background: #A84111;
     ;
 }
 
-.page-btn:hover:before {
+.page-btn:hover:before,
+.send:hover:before {
     right: -15px;
     top: 0px;
     transition: 0.4s;
     width: 135px;
 }
 
-.page-btn:hover:after {
+.page-btn:hover:after,
+.send:hover:after {
     right: -45px;
     top: 15px;
     transition: 0.7s;
@@ -1186,6 +1192,7 @@ input:-webkit-autofill {
   }
   
   .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label,
+  .wpcf7-form-control:focus ~ label, .wpcf7-form-control:not(:placeholder-shown) ~ label,
   .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
     -webkit-transform: translateY(-24px);
     transform: translateY(-24px);
@@ -1197,6 +1204,34 @@ input:-webkit-autofill {
     line-height: 14px;
   }
   
+
+  .form-content input::placeholder,
+  .form-content textarea::placeholder{
+    color:transparent;
+  }
+
+  .send input{
+    background: transparent;
+    padding: 0;
+    border: 0;
+    width: auto;
+  }
+
+.send{
+    display: inline-block;
+    padding: 12px;
+    text-align: center;
+}
+.send input{
+    background: transparent;
+    padding: 0;
+    border: 0;
+    width: auto;
+    color:var(--color-white);
+}
+.wpcf7-spinner{
+    position: absolute;
+}
   /* About osho page */
 
   .ao-highlight p, .quotation{
@@ -1276,7 +1311,7 @@ input:-webkit-autofill {
  .ai-wrap .ai-track-progress,
  .ai-wrap .ai-volume-bar.ai-volume-bar-active::before,
  .ai-wrap .ai-btn.ai-btn-active,
- .ai-wrap .ai-btn:hover{
+ .ai-wrap .ai-btn.page-btn:hover:after{
     background-color: #993B51;
  }
  .ai-wrap .ai-track, .ai-wrap .ai-track-no-thumb{

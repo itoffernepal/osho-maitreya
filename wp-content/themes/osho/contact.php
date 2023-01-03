@@ -66,7 +66,7 @@ get_header(); ?>
                         </div>
                     </div>
                 </form> -->
-                <?php //echo do_shortcode('[contact-form-7 id="75" title="Contact Form"]');
+                <?php echo do_shortcode('[contact-form-7 id="75" title="Contact Form"]');
                 ?>
             </div>
             <div class="map large-pt position-relative">
