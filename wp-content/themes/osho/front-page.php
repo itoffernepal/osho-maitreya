@@ -48,16 +48,21 @@
     </section>
 </div>
 <!-- Banner section end -->
+
+<!-- Latest Audiobook section start -->
 <div class="audio-books">
     <div class="container">
         <section class="ab-sec">
             <div class="section-intro">
                 <div class="section-title">
+                    <!-- Latest audiobook title -->
                     <h2><?php the_field('audiobook_title'); ?></h2>
                 </div>
+                <!-- latest audiobook content -->
                 <p><?php the_field('audiobook_content'); ?></p>
             </div>
             <div class="ab-slider">
+                <!-- album cpt start -->
             <?php $albums = array(
                     'post_type'     => 'albums',
                     'posts_per_page'=> -1,
@@ -81,86 +86,24 @@
                             </ul>
                             <h2><?php the_title();?></h2>
                             <!-- <span class="total-chapter">1 Chapters</span>  -->
-                            <?php
-                            $playlists = get_field('album_playlist', $post->ID);
-                            $total_tracks = 0;
-                            if (isset($playlists) && !empty($playlists)) {
-                            
-                            for ($i = 0; $i < count($playlists); $i++) {
-                                $tracks = get_post_meta($playlists[$i], '_audioigniter_tracks', true);
-
-                                
-                                if (isset($tracks) && !empty($tracks)) {
-                                $total_tracks += count($tracks); 
-                                }
-                            }
-                            }
-                            echo '<span class="total-chapter">' . $total_tracks . ' Chapters</span>';
-                            ?>
+                            <!-- number of chapter in album code start -->
+                            <?php $playlists = get_field('album_playlist',$post->ID);?>
+                            <?php if(isset($playlists) && !empty($playlists)):?>
+                                <?php $tracks = get_post_meta($playlists[0],'_audioigniter_tracks',true);?>
+                                <?php  if(isset($tracks) &&  !empty($tracks)):?>
+                                    <?php //$unserliazedTracks = unserialize($tracks);?>
+                                    <span class="total-chapter"><?php echo count($tracks);?> Chapters</span>
+                                <?php endif;?>
+                            <?php endif;?>
+                            <!-- number of chapter in album code end -->
                         </div>
                     </a>
                 </div>
-                
                 <?php endwhile;wp_reset_postdata();?>
                 <?php endif;?>
-                <!-- <div class="slide-item ab-card">
-                    <a href="#">
-                        <div class="ab-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ab1.png" class="img-fluid">
-                        </div>
-                        <div class="ab-brief">
-                            <ul class="meta-tag">
-                                <li>November 28, 2022</li>
-                            </ul>
-                            <h2>God: The Centre of Life </h2>
-                            <span class="total-chapter">17 Chapters</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide-item ab-card">
-                    <a href="#">
-                        <div class="ab-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ab2.png" class="img-fluid">
-                        </div>
-                        <div class="ab-brief">
-                            <ul class="meta-tag">
-                                <li>November 28, 2022</li>
-                            </ul>
-                            <h2>The Dance of the Divine </h2>
-                            <span class="total-chapter">17 Chapters</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide-item ab-card">
-                    <a href="#">
-                        <div class="ab-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ab3.png" class="img-fluid">
-                        </div>
-                        <div class="ab-brief">
-                            <ul class="meta-tag">
-                                <li>November 28, 2022</li>
-                            </ul>
-                            <h2>Just Mindfulness </h2>
-                            <span class="total-chapter">17 Chapters</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide-item ab-card">
-                    <a href="#">
-                        <div class="ab-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ab4.png" class="img-fluid">
-                        </div>
-                        <div class="ab-brief">
-                            <ul class="meta-tag">
-                                <li>November 28, 2022</li>
-                            </ul>
-                            <h2>A Moment of Eternal Silence</h2>
-                            <span class="total-chapter">17 Chapters</span>
-                        </div>
-                    </a>
-                </div> -->
-
+                <!-- album cpt end -->
             </div>
+            <!-- Latest audiobook section button -->
             <div class="text-center more-link">
                 <?php $audio_button = get_field('audiobook_button'); ?>
                 <?php if ($audio_button) :
@@ -172,17 +115,23 @@
                     </a>
                 <?php endif; ?>
             </div>
+            <!-- end -->
         </section>
     </div>
+    <!-- latest audiobook section bg image -->
     <div class="line-img">
         <?php $bg_image = get_field('audiobook_bg_image'); ?>
         <?php if (!empty($bg_image)) : ?>
             <img src="<?php echo esc_url($bg_image['url']); ?>" alt="<?php echo esc_html($bg_image['alt']); ?>">
         <?php endif; ?>
     </div>
+    <!-- end -->
 </div>
-<div class="about position-relative">
+<!-- Latest Audiobook section end -->
 
+
+<!-- About osho section -->
+<div class="about position-relative">
     <div class="about-img">
         <div class="row">
             <div class="offset-lg-7 col-lg-5">
@@ -221,6 +170,7 @@
         </section>
     </div>
 </div>
+<!-- About osho section end -->
 <div class="osho-maitrey position-relative">
     <div class="container">
         <section class="om-sec">

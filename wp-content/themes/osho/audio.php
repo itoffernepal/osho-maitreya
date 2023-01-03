@@ -14,20 +14,62 @@ get_header('2');?>
         </section>
     </div>
 </div>
+<?php
+// Set up the arguments for the custom query
+$args = array(
+  'post_type' => 'albums',
+); ?>
+
+<?php if ( isset( $_GET['sortby'] ) ) { ?>
+
+    <?php   switch ( $_GET['sortby'] ) {
+    case 'title':
+      $args['orderby'] = 'title';
+      $args['order'] = 'DESC';
+      break;
+    case 'date':
+      $args['orderby'] = 'date';
+      $args['order'] = 'DESC';
+      break;
+    case 'author':
+      $args['orderby'] = 'author';
+      $args['order'] = 'ASC';
+      break;
+  } ?>
+  <?php } ?>
 <div class="audio-books bg-transparent">
     <div class="container">
         <section class="ab-sec">
             <div class="filter">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <?php
+                    $query = new WP_Query( $args );
+
+                    // Check if there are any posts
+                    if ( $query->have_posts() ) :
+                    
+                      // Display the sorting form
+                      ?>
+                    <!-- <div class="form-group">
                     <i class="fas fa-sliders-h"></i>
-                        <select>
+                    <select id="sort-select">
                             <option>Sorted by latest</option>
                             <option>Sorted by oldest</option>
                             <option>Sorted by (A-Z)</option>
                         </select>
+                    </div> -->
+                    <form method="get" action="">
+                    <div class="form-group">
+                    <i class="fas fa-sliders-h"></i>
+                        <select name="sortby" id="sort-select">
+                        <option value="title">Sorted by latest</option>
+                        <option value="date">Sorted by oldest</option>
+                        <option value="author">Sorted by (A-Z)</option>
+                        </select>
+                        <input type="submit" class="search-btn" value="Go">
                     </div>
+                    </form>
                 </div>
                 <div class="col-md-6">
                     <!-- <div class="form-group text-end">
@@ -40,16 +82,11 @@ get_header('2');?>
             </div>
             <div class="ab-lists">
                 <div class="row justify-content-center">
-                <?php $albums = array(
-                    'post_type'     => 'albums',
-                    'posts_per_page'=> -1,
-                    'orderby'       => 'date',
-                    'order'         => 'DES',
-                );
-                $album_query = new WP_Query($albums);
-                if($album_query->have_posts()):
-                    while($album_query->have_posts()) : $album_query->the_post(); global $post;
-                ?>
+                <?php
+
+// Start the loop
+while ( $query->have_posts() ) : $query->the_post();
+?>
                 <div class="column">
                 <div class="slide-item ab-card">
                     <a href="<?php the_permalink();?>">
@@ -68,15 +105,16 @@ get_header('2');?>
                                 <?php $tracks = get_post_meta($playlists[0],'_audioigniter_tracks',true);?>
                                 <?php  if(isset($tracks) &&  !empty($tracks)):?>
                                     <?php //$unserliazedTracks = unserialize($tracks);?>
-                                    <?php echo count($tracks);?> Chapters
+                                    <span class="total-chapter"><?php echo count($tracks);?> Chapters</span>
                                 <?php endif;?>
                             <?php endif;?>
                         </div>
                     </a>
                 </div>
                 </div>
-                <?php endwhile;wp_reset_postdata();?>
+                <?php endwhile;?>
                 <?php endif;?>
+                <?php wp_reset_postdata();?>
                 </div>
             </div>
             

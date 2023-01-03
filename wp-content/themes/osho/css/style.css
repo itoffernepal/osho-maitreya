@@ -1368,3 +1368,13 @@ a.scrollup:visited {
 #btn-scrollup {
     display: none;
 }
+
+input.search-btn{
+    width: auto !important;
+    min-width: unset !important;
+    padding: 7px !important;
+    background: var(--color-primary) !important;
+    color: #fff;
+    border: 0 !important;
+    font-size: 12px;
+}
