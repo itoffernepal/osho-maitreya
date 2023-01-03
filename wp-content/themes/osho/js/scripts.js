@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
 
     jQuery(".hero-slider, .om-slider").slick({
-        autoplay: true,
+        autoplay: false,
         lazyLoad: "ondemand",
         autoplaySpeed: 4000,
         arrows: true,
@@ -24,6 +24,13 @@ jQuery(document).ready(function () {
         arrows: false,
         dots: true,
         responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+            },
+          },
           {
             breakpoint: 992,
             settings: {
@@ -75,6 +82,14 @@ jQuery(document).ready(function () {
        );
        return false;
      });
+
+     jQuery(".mobile-menu-icon").on("click", function () {
+      jQuery(".mobile-navigation").addClass("active");
+  });
+  jQuery(".close-icon ").on("click", function () {
+      jQuery(".mobile-navigation").removeClass("active");
+  });
+     
 
 });
 

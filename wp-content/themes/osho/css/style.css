@@ -933,6 +933,7 @@ header {
 }
 .eb-img{
     height: 100%;
+    width: 100%;
 }
 .eb-img img{
     height: 100%;
@@ -1219,15 +1220,17 @@ input:-webkit-autofill {
 
 .send{
     display: inline-block;
-    padding: 12px;
+    padding: 0px;
     text-align: center;
 }
 .send input{
     background: transparent;
-    padding: 0;
+    padding: 12px;
     border: 0;
     width: auto;
     color:var(--color-white);
+    width: 100%;
+
 }
 .wpcf7-spinner{
     position: absolute;
@@ -1350,6 +1353,42 @@ input:-webkit-autofill {
     }
 }
 
+.mobile-navigation{
+    z-index: 999;
+    position: fixed;
+    background: #fff;
+        left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    height: 0;
+    display: block !important;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+.mobile-navigation.active{
+    height: 100%;
+    top: 0;
+    transition: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+.close-icon{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+.navbar-nav .nav-link{
+    color:var(--color-primary);
+}
+
 a.scrollup,
 a.scrollup:visited {
     bottom: 50px;
@@ -1364,7 +1403,45 @@ a.scrollup:visited {
     border-radius: 4px;
     background: var(--color-secondary);
 }
-
+.mobile-menu .navbar-nav .nav-item{
+    border-bottom: 1px solid #ddd;
+}
+.mobile-menu .navbar-nav{
+    max-width: 50%;
+    margin:0 auto;
+}
+.mobile-menu .navbar-nav .sub-menu li a{
+    padding: 0.5rem 1rem;
+}
 #btn-scrollup {
     display: none;
 }
+
+
+.mobile-menu-icon .icon {
+    border: 1px solid var(--color-white);
+    color:var(--color-white);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+.navbar>.container{
+    flex-wrap: unset;
+}
+.main-menu.sticky .mobile-menu-icon .icon,
+.inner-header .mobile-menu-icon .icon {
+    border: 1px solid var(--color-primary);
+    color:var(--color-primary);
+}
+.mobile-navigation .social-media li{
+    margin:0 10px;
+    display: inline-block;
+}
+.side-menu-header{
+    padding:5px 0;
+}
+
+
