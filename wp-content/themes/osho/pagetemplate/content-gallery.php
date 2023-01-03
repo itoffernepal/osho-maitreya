@@ -9,7 +9,7 @@
                 if ($gallery_query->have_posts()) :
                     while ($gallery_query->have_posts()) : $gallery_query->the_post();
                 ?>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
 
                             <?php
                             $images = get_field('add_images');

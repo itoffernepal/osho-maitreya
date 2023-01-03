@@ -27,6 +27,7 @@
                             <?php  } ?>
                         </a>
                         <!--  -->
+                     
                         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                             <!-- Header Menu Section -->
                             <?php
@@ -86,9 +87,14 @@
                             <?php } ?>
                             <!-- Header Menu End -->
                         </div>
+                        <div class="nav-right d-flex align-items-center">
                         <div class="lang text-end ms-4">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/lang-switch.png" alt=""
                                 class="img-fluid">
+                        </div>
+                        <div class="mobile-menu-icon d-none ms-4">
+                            <span class="icon"><i class="fas fa-bars"></i></span>
+                        </div>
                         </div>
                     </div>
                 </nav>
@@ -97,13 +103,13 @@
 
         <div class="mobile-navigation d-none">
             <div class="side-menu-header mb-3">
-                <div class="logo">
+                <div class="logo container">
                     <!-- Header Logo -->
                     <?php
                         $custom_logo_id = get_theme_mod('custom_logo');
                         $image = wp_get_attachment_image_src($custom_logo_id, 'full');
                         ?>
-                    <a href="<?php echo site_url(); ?>" class="navbar-brand">
+                    <a href="<?php echo site_url(); ?>" class="navbar-brand m-0">
                         <?php if ($image[0]) { ?>
                         <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
 
@@ -113,8 +119,9 @@
                         <?php  } ?>
                     </a>
                 </div>
+                <span class="close-icon"><i class="fas fa-times"></i></span>
             </div>
-            <div id="menu-primary-menu" class="mobile-menu my-3">
+            <div id="menu-primary-menu" class="mobile-menu my-5">
                                                <!-- Header Menu Section -->
                                                <?php
                             $menu_name = 'primary-menu';
@@ -174,4 +181,13 @@
                             <!-- Header Menu End -->
               
             </div>
+            <ul class="social-media">
+                            <?php if (have_rows('footer_icons', 'option')) : ?>
+                                <?php while (have_rows('footer_icons', 'option')) : the_row();
+                                    $icon = get_sub_field('icon');
+                                ?>
+                                    <li><a href="<?php the_sub_field('icon_url', 'option'); ?>" target="_blank"><?php echo $icon; ?></a></li>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                        </ul>
         </div>

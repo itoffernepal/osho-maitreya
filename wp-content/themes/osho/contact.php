@@ -1,6 +1,6 @@
 <?php
 /*Template Name: Contact Us page */
-get_header(); ?>
+get_header('2'); ?>
 <!-- Banner Image -->
 <div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>);">
     <div class="container">
@@ -68,6 +68,8 @@ get_header(); ?>
                 </form> -->
                 <?php echo do_shortcode('[contact-form-7 id="75" title="Contact Form"]');
                 ?>
+
+
             </div>
             <div class="map large-pt position-relative">
                 <div class="map-detail">

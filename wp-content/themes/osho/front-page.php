@@ -251,12 +251,12 @@
             
             <div class="event-brief">
                 <div class="row g-0 ">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-5">
                         <div class="eb-img">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/osho.png" class="img-fluid" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-7">
                         <div class="eb-time">
                         <h2>Osho Meditative Therapy</h2>
                             <ul>
@@ -265,7 +265,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-12">
                         <div class="eb-text">
                             <p> A very powerful & most fundamental meditative therapy designed by Osho for every
                                 meditator whether beginner or seasoned. There are 3 steps to dive deeper & allowing
@@ -292,7 +292,7 @@
                                     <p>Please enter information to submit your query for event<br>Osho Meditative Therapy(2023).</p>
                                 </div>
 
-                                <form autocomplete="off">
+                                <!-- <form autocomplete="off">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="floating-label form-group">
@@ -396,7 +396,9 @@
                                             <button class="page-btn dark w-auto"> Submit</button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> -->
+                                <?php echo do_shortcode('[contact-form-7 id="372" title="Registration Form"]');
+                ?>
                             </div>
                         </div>
                     </div>
