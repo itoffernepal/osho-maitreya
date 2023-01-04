@@ -33,6 +33,7 @@ get_header('2');?>
                 'order' => 'DES',
             );
             $event_query = new WP_Query($events);
+            
             if($event_query->have_posts()) :
                 while($event_query->have_posts()) : $event_query->the_post();
             ?>
@@ -65,34 +66,39 @@ get_header('2');?>
                                 <li><?php the_field('event_quotation');?></li>
                                 <li>Facilitated by: <?php the_field('event_faciliated_by');?></li>
                             </ul>
-                            <a href="#event-form" class="page-btn dark" data-bs-toggle="modal">Book now</a>
+                            <a href="#" class="page-btn dark event_modal_popup_btn" data-event-id="<?php echo get_the_ID();?>" data-event-title="<?php echo  get_the_title();?>">Book now</a>
+
                         </div>
                     </div>
                 </div>
                 <div class="line-img">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/line2.png" alt="">
                 </div>
-                <!-- event modal -->
-                <!-- Modal -->
-                <div class="modal fade form-popup" id="event-form" tabindex="-1" aria-hidden="true">
+                
+            </div>
+            <?php }?>
+            
+            <?php endwhile; wp_reset_postdata();?>
+            <?php endif;?>
+                <div class="modal fade form-popup" id="event_registration_form" tabindex="-1" aria-hidden="true">
+
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body form-content p-4">
                                 <div class="section-intro text-start mb-4">
-                                    <h2><?php the_field('registration_form_title','option');?></h2>
+                                    <h2><?php the_field('registration_form_title','option');?><span class="modal_event_title"></span></h2>
                                     <?php the_field('registration_form_subtitle','option');?>
                                 </div>
-                                <?php echo do_shortcode('[contact-form-7 id="437" title="Registration Form"]');?>
+                                <?php 
+                $form_html = do_shortcode('[contact-form-7 id="437" title="Registration Form"]');
+                // Add the post title as a hidden field
+                $form_html = str_replace('</form>', '<input type="hidden" class="event_title" name="event_title" value="" /></form>', $form_html);
+                echo $form_html;
+                ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- event modal close -->
-            </div>
-            <?php }?>
-            <?php endwhile; wp_reset_postdata();?>
-            <?php endif;?>
-
         </section>
     </div>
 </div>

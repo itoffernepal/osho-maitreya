@@ -89,7 +89,22 @@ jQuery(document).ready(function () {
   jQuery(".close-icon ").on("click", function () {
       jQuery(".mobile-navigation").removeClass("active");
   });
+
+  jQuery(".event_modal_popup_btn").on("click", function (e) {
+    e.preventDefault()
+    //grab the data  event id
+    let event_id = jQuery(this).data('event-id')
+    let event_title = jQuery(this).data('event-title')
+    // insert the event title to the  hidden field  within the form
+    jQuery('.event_title').val(event_title)
+    jQuery('.modal_event_title').text(event_title)
+    // // make the title for  the modal dyanmic
+    // // show the modal 
+    jQuery('.form-popup').modal('show')
+});
      
 
 });
+
+
 

@@ -349,9 +349,75 @@ function album_custom_post_type() {
   
     add_action( 'init', 'album_custom_post_type', 0 );
 
-
+    function custom_widgets_init()
+    {
+        register_sidebar(
+            array(
+                'name'          => esc_html__('Sidebar', 'custom'),
+                'id'            => 'sidebar-1',
+                'description'   => esc_html__('Add widgets here.', 'custom'),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</section>',
+                'before_title'  => '<h2 class="widget-title">',
+                'after_title'   => '</h2>',
+            )
+        );
+        register_sidebar(
+            array(
+                'name'          => esc_html__('Language Switcher', 'custom'),
+                'id'            => 'language-switcher',
+                'description'   => esc_html__('Add widgets here.', 'custom'),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</section>',
+                'before_title'  => '<h2 class="widget-title">',
+                'after_title'   => '</h2>',
+            )
+        );
+    }
+    add_action('widgets_init', 'custom_widgets_init');
     // remove span in cf7
     add_filter('wpcf7_form_elements', function($content) {
 $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 return $content; });
+
+// modal event_title mail_tags
+add_filter( 'wpcf7_mail_tag_replaced', 'replace_event_title_mail_tag', 10, 3 );
+function replace_event_title_mail_tag( $replaced, $substitute, $pattern ) {
+  // check if the mail tag being replaced is "[event-title]"
+  if ( $pattern == '[event-title]' ) {
+    // get the event title from the jQuery code
+    $event_title = 'jQuery(".event_title").val()';
+    // return the event title as the substitute for the mail tag
+    $replaced = $event_title;
+  }
+  return $replaced;
+}
+
+add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
+function check_form_submission( $output, $status, $post_id ) {
+  if ( $status == 'mail_sent' ) {
+    // Form submission is being made
+    // Do something here
+  } else {
+    // Form submission is not being made
+    // Do something else here
+  }
+  return $output;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
 
