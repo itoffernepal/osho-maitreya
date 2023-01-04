@@ -76,9 +76,16 @@
 
                         <div class="slide-item ab-card">
                             <a href="<?php the_permalink(); ?>">
-                                <div class="ab-img">
-                                    <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid">
-                                </div>
+                            <div class="ab-img">
+                            <?php 
+                                $thumbnail_url = get_the_post_thumbnail_url();
+                                if ( empty( $thumbnail_url ) ) {
+                                $thumbnail_url = get_template_directory_uri() . '/images/placeholder.png';
+                                }
+                            ?>
+                            <img src="<?php echo esc_url( $thumbnail_url ); ?>" class="img-fluid">
+                            </div>
+
                                 <div class="ab-brief">
                                     <ul class="meta-tag">
                                         <li><?php echo get_the_date('F') ?> <?php echo get_the_date('d'); ?>
@@ -171,6 +178,8 @@
     </div>
 </div>
 <!-- About osho section end -->
+
+<!-- About Osho Maitreya section start -->
 <div class="osho-maitrey position-relative">
     <div class="container">
         <section class="om-sec">
@@ -213,7 +222,10 @@
         <?php endif; ?>
     </div>
 </div>
+<!-- About Osho Maitreya section end -->
 
+
+<!-- Quote Section Start -->
 <div class="bg-attachment position-relative" style="background:url(<?php $background_image = get_field('quote_section_bg_image');
                                                                     echo $background_image['url']; ?>)">
     <div class="container">
@@ -239,6 +251,9 @@
         </section>
     </div>
 </div>
+<!-- Quote Section End -->
+
+<!-- Event Section Start -->
 <div class="events">
     <div class="container">
         <section class="events-sec">
@@ -261,7 +276,9 @@
             if ($event_query->have_posts()) :
                 while ($event_query->have_posts()) : $event_query->the_post();
             ?>
+            <!-- Template Parts -->
                     <?php get_template_part('pagetemplate/content', 'event'); ?>
+                    <!-- Template Parts end -->
                 <?php endwhile;
                 wp_reset_postdata(); ?>
             <?php endif; ?>
@@ -284,8 +301,9 @@
         </section>
     </div>
 </div>
+<!-- Event Section End -->
 
-
+<!-- Gallery Section Start -->
 <div class="gallery">
     <div class="container">
         <section class="gallery-sec pt-0">
@@ -310,6 +328,9 @@
         </section>
     </div>
 </div>
+<!-- Gallery Section End -->
+
+<!-- Contact Section Start -->
 <div class="cta">
     <div class="container">
         <section class="cta-sec text-center wow fadeInUp">
@@ -327,5 +348,5 @@
         </section>
     </div>
 </div>
-
+<!-- Contact Section End -->
 <?php get_footer(); ?>

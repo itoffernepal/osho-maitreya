@@ -390,18 +390,41 @@ function wpcf7_add_event_title_to_mail_tag( $components ) {
     return $components;
 }
 
-add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
-function check_form_submission( $output, $status, $post_id ) {
-  if ( $status == 'mail_sent' ) {
-    // Form submission is being made
-    // Do something here
-  } else {
-    // Form submission is not being made
-    // Do something else here
-  }
-  return $output;
-}
+// add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
+// function check_form_submission( $output, $status, $post_id ) {
+//   if ( $status == 'mail_sent' ) {
+//     // Form submission is being made
+//     // Do something here
+//   } else {
+//     // Form submission is not being made
+//     // Do something else here
+//   }
+//   return $output;
+// }
 
+
+// Second logo section customizer
+function osho_customize_register($wp_customize){
+    //header section
+
+    $wp_customize-> add_section('osho_logo_section', [
+        'title' => __('Logo 2', 'osho'),
+        'priority' => 30,
+    ]);
+
+     //Footer Logo
+    $wp_customize -> add_setting('osho_img_handle',[
+        'transport' => 'refresh',
+        'height' => 320
+    ]);
+    $wp_customize-> add_control(new WP_Customize_Image_Control($wp_customize,'osho_img_handle_input', array(
+        'label' => __('Logo 2', 'osho'),
+        'section' => 'osho_logo_section',
+        'settings' => 'osho_img_handle',
+        
+    )));
+}
+add_action('customize_register', 'osho_customize_register');
 
 
 

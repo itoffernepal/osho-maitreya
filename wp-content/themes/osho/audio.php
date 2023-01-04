@@ -84,7 +84,13 @@ $args = array(
                             <div class="slide-item ab-card wow fadeInUp">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="ab-img">
-                                        <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid">
+                                    <?php 
+                                $thumbnail_url = get_the_post_thumbnail_url();
+                                if ( empty( $thumbnail_url ) ) {
+                                $thumbnail_url = get_template_directory_uri() . '/images/placeholder.png';
+                                }
+                            ?>
+                            <img src="<?php echo esc_url( $thumbnail_url ); ?>" class="img-fluid">
                                     </div>
                                     <div class="ab-brief">
                                         <ul class="meta-tag">
