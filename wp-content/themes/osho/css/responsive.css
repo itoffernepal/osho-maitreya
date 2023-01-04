@@ -75,7 +75,13 @@
 }
 @media (max-width: 767px){
     .section-title h2{
-        font-size: 24px;
+        font-size: 26px;
+    }
+    .footer-content h3{
+        font-size: 20px;
+    }
+    .footer-content{
+        margin-top:25px !important
     }
 .logo{
     text-align: left;
@@ -91,6 +97,9 @@
 }
 footer section{
     padding:50px 0;
+}
+.ss-page section{
+    padding-bottom: 25px!important;
 }
 }
 
