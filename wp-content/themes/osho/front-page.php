@@ -27,7 +27,7 @@
             <!-- Banner Title , content , button -->
             <div class="hero-content text-black">
                 <div class="container">
-                    <div class="banner-content">
+                    <div class="banner-content wow fadeInUp">
                         <h1><?php the_field('banner_title'); ?></h1>
                         <?php the_field('banner_content'); ?>
                         <?php $button = get_field('banner_button'); ?>
@@ -53,7 +53,7 @@
 <div class="audio-books">
     <div class="container">
         <section class="ab-sec">
-            <div class="section-intro">
+            <div class="section-intro wow fadeIn">
                 <div class="section-title">
                     <!-- Latest audiobook title -->
                     <h2><?php the_field('audiobook_title'); ?></h2>
@@ -61,8 +61,7 @@
                 <!-- latest audiobook content -->
                 <p><?php the_field('audiobook_content'); ?></p>
             </div>
-            <div class="ab-slider">
-                <!-- album cpt start -->
+            <div class="ab-slider wow fadeIn">
             <?php $albums = array(
                     'post_type'     => 'albums',
                     'posts_per_page'=> -1,
@@ -103,8 +102,7 @@
                 <?php endif;?>
                 <!-- album cpt end -->
             </div>
-            <!-- Latest audiobook section button -->
-            <div class="text-center more-link">
+            <div class="text-center more-link wow fadeInUp">
                 <?php $audio_button = get_field('audiobook_button'); ?>
                 <?php if ($audio_button) :
                     $audio_button_url = $audio_button['url'];
@@ -118,8 +116,7 @@
             <!-- end -->
         </section>
     </div>
-    <!-- latest audiobook section bg image -->
-    <div class="line-img">
+    <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
         <?php $bg_image = get_field('audiobook_bg_image'); ?>
         <?php if (!empty($bg_image)) : ?>
             <img src="<?php echo esc_url($bg_image['url']); ?>" alt="<?php echo esc_html($bg_image['alt']); ?>">
@@ -147,7 +144,7 @@
     <div class="container">
         <section class="about-sec text-center">
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-7 wow fadeInUp">
                     <div class="section-intro mb-0">
                         <div class="section-title">
                             <h2><?php the_field('about_osho_title'); ?></h2>
@@ -174,13 +171,13 @@
 <div class="osho-maitrey position-relative">
     <div class="container">
         <section class="om-sec">
-            <div class="section-intro">
+            <div class="section-intro wow fadeIn">
                 <div class="section-title">
                     <h2><?php the_field('about_osho_maitreya_title'); ?></h2>
                 </div>
                 <p><?php the_field('about_osho_maitreya_content'); ?></p>
             </div>
-            <div class="om-slider">
+            <div class="om-slider wow fadeInUp">
                 <?php if (have_rows('about_osho_maitreya_slider')) : ?>
                     <?php while (have_rows('about_osho_maitreya_slider')) : the_row(); ?>
                         <div class="slide-item">
@@ -206,7 +203,7 @@
             </div>
         </section>
     </div>
-    <div class="line-img">
+    <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
         <?php $maitreya_bg_image = get_field('about_osho_maitreya_bg_image'); ?>
         <?php if (!empty($maitreya_bg_image)) : ?>
             <img src="<?php echo esc_url($maitreya_bg_image['url']); ?>" alt="<?php echo esc_html($maitreya_bg_image['alt']); ?>">
@@ -217,7 +214,7 @@
 <div class="bg-attachment position-relative" style="background:url(<?php $background_image = get_field('quote_section_bg_image');
                                                                     echo $background_image['url']; ?>)">
     <div class="container">
-        <section class="bga-sec text-center large-p">
+        <section class="bga-sec text-center large-p wow fadeIn">
             <figure>
                 <?php $quote_logo = get_field('quote_section_logo'); ?>
                 <?php if (!empty($quote_logo)) : ?>
@@ -242,21 +239,21 @@
 <div class="events">
     <div class="container">
         <section class="events-sec">
-            <div class="section-intro">
+            <div class="section-intro wow fadeIn">
                 <div class="section-title">
                     <h2><?php the_field('upcoming_title'); ?></h2>
                 </div>
                 <?php the_field('upcoming_content'); ?>
             </div>
             
-            <div class="event-brief">
+            <div class="event-brief wow pulse">
                 <div class="row g-0 ">
-                    <div class="col-lg-3 col-md-6 col-sm-5">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-img">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/osho.png" class="img-fluid" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-7">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-time">
                         <h2>Osho Meditative Therapy</h2>
                             <ul>
@@ -278,7 +275,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="line-img">
+                <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/line2.png" alt="">
                 </div>
                 <!-- event modal -->
@@ -405,7 +402,7 @@
                 </div>
                 <!-- event modal close -->
             </div>
-            <div class="more-link mt-5 text-center">
+            <div class="more-link mt-5 text-center wow fadeInUp">
                 <?php $upcoming_button = get_field('upcoming_event_button'); ?>
                 <?php if ($upcoming_button) :
                     $upcoming_button_url    = $upcoming_button['url'];
@@ -431,7 +428,7 @@
             <!-- Gallery Section -->
             <?php get_template_part('pagetemplate/content','gallery');?>
             <!-- end -->
-            <div class="more-link mt-5 text-center">
+            <div class="more-link mt-5 text-center wow fadeInUp">
                 <?php $gallery_button   = get_field('gallery_button'); ?>
                 <?php if ($gallery_button) :
                     $gallery_button_url     = $gallery_button['url'];
@@ -445,7 +442,7 @@
 </div>
 <div class="cta">
     <div class="container">
-        <section class="cta-sec text-center">
+        <section class="cta-sec text-center wow fadeInUp">
             <h3><?php the_field('contact_title'); ?></h3>
             <?php the_field('contact_content'); ?>
             <div class="more-link mt-5 text-center">

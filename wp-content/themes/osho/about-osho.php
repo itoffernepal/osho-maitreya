@@ -17,7 +17,7 @@ get_header('2'); ?>
 <div class="abt-osho ss-page">
     <div class="container">
         <section class="ao-sec">
-            <div class="section-intro text-start">
+            <div class="section-intro text-start wow fadeIn">
                 <div class="section-title">
                     <h2>
                         <?php the_field('title'); ?> </h2>
@@ -25,7 +25,7 @@ get_header('2'); ?>
             </div>
             <div class="row">
                 <div class="col-lg-7">
-                    <div class="ao-text">
+                    <div class="ao-text wow fadeIn">
                         <div class="text-center ao-highlight">
                             <p><?php the_field('highlighted_text'); ?></p>
                         </div>
@@ -33,7 +33,7 @@ get_header('2'); ?>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="ao-img">
+                    <div class="ao-img wow fadeInUp">
                         <?php $about_img = get_field('about_image'); ?>
                         <?php if (!empty($about_img)) : ?>
                             <img src="<?php echo esc_url($about_img['url']); ?>" class="img-fluid" alt="<?php echo esc_html($about_img['alt']); ?>">
@@ -41,12 +41,12 @@ get_header('2'); ?>
                     </div>
                 </div>
             </div>
-            <div class="quote-part small-p">
+            <div class="quote-part small-p wow fadeInUp">
                 <div class="quotation">
                     <?php the_field('quote'); ?>
                 </div>
             </div>
-            <div class="lg-image text-center">
+            <div class="lg-image text-center wow fadeIn">
                 <figure>
                     <?php $about_img2 = get_field('about_image_2'); ?>
                     <?php if (!empty($about_img2)) : ?>
@@ -55,7 +55,7 @@ get_header('2'); ?>
                 </figure>
             </div>
             <?php the_field('text_content_2'); ?>
-            <div class="quote-part small-p">
+            <div class="quote-part small-p wow fadeIn">
                 <div class="quotation">
                     <?php the_field('quote_2'); ?>
                 </div>

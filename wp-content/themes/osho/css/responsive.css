@@ -46,6 +46,32 @@
     .eb-time{
         border: 0;
     }
+    .ao-sec .row{
+        flex-direction: column-reverse;
+    }
+    .ao-img, .estd-img, .om-img{
+        text-align: center;
+        margin-bottom: 35px;
+    }
+    .estd-img img{
+        height: auto;
+    }
+    .journey-sec .journey-period .row:last-child,
+    .osho-maitreya  .row{
+
+        flex-direction: column-reverse;
+    }
+    .ab-lists .row .column{
+        flex: 0 0 33%;
+    }
+    .map-detail{
+        margin: 0;
+        max-width: 100%;
+    }
+    .map iframe{
+        position: static;
+        width: 100%;
+    }
 }
 @media (max-width: 767px){
     .section-title h2{
@@ -57,6 +83,15 @@
 .close-icon{
     right: 10px;
 }
+.quotation{
+    padding: 35px 25px;
+}
+.ab-lists .row .column{
+    flex: 0 0 50%;
+}
+footer section{
+    padding:50px 0;
+}
 }
 
 @media (max-width: 575px){
@@ -66,11 +101,14 @@
 .hero-content h1{
     font-size: 28px;
 }
+.ao-text p, .om-text p, .estd-text p, .ss-page, .ss-page p{
+    font-size: 16px;
+}
 .slider-text{
     padding: 15px;
 }
 .om-slider .slick-next, .om-slider .slick-prev{
-    top: 110%;
+    top: 105%;
 }
 .slider-content{
     top: 0;
@@ -82,6 +120,28 @@
 }
 .slider-text h2{
     margin-bottom: 10px;
+}
+.slider-content{
+    position: static;
+    max-width: 96%;
+}
+.slider-text{
+    border-radius: 0;
+}
+.eb-time{
+    padding-bottom: 0;
+}
+.eb-text{
+    padding-top: 0;
+}
+.filter .row{
+    flex-direction: column-reverse;
+}
+.filter .row .form-group{
+    text-align: left !important;
+}
+.filter .form-group input{
+    width: 100%;
 }
 }
 

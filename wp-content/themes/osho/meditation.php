@@ -17,12 +17,12 @@ get_header('2'); ?>
 <div class="meditation ss-page">
     <div class="container">
         <section class="meditation-sec">
-            <div class="section-intro text-start">
+            <div class="section-intro text-start wow fadeIn">
                 <div class="section-title">
                     <h2><?php the_field('title'); ?></h2>
                 </div>
             </div>
-            <div class="lg-image text-center">
+            <div class="lg-image text-center wow fadeIn">
                 <figure>
                     <?php $image = get_field('image'); ?>
                     <?php if (!empty($image)) : ?>
@@ -32,7 +32,7 @@ get_header('2'); ?>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="om-text meditation-text text-center">
+                    <div class="om-text meditation-text text-center wow fadeIn">
                         <?php the_field('content'); ?>
                     </div>
                 </div>

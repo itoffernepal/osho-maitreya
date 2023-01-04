@@ -42,16 +42,8 @@ $args = array(
         <section class="ab-sec">
             <div class="filter">
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <?php
-                    $query = new WP_Query( $args );
-
-                    // Check if there are any posts
-                    if ( $query->have_posts() ) :
-                    
-                      // Display the sorting form
-                      ?>
-                    <!-- <div class="form-group">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
                     <i class="fas fa-sliders-h"></i>
                     <select id="sort-select">
                             <option>Sorted by latest</option>
@@ -71,7 +63,7 @@ $args = array(
                     </div>
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <!-- <div class="form-group text-end">
                     <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search...">
@@ -88,7 +80,7 @@ $args = array(
 while ( $query->have_posts() ) : $query->the_post();
 ?>
                 <div class="column">
-                <div class="slide-item ab-card">
+                <div class="slide-item ab-card wow fadeInUp">
                     <a href="<?php the_permalink();?>">
                         <div class="ab-img">
                             <img src="<?php the_post_thumbnail_url();?>" class="img-fluid">
