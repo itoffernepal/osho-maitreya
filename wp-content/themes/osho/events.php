@@ -38,19 +38,16 @@ get_header('2');?>
                 while($event_query->have_posts()) : $event_query->the_post();
             ?>
             <?php $date= get_field('event_end_date');?>
-            <?php if(time() < strtotime($date)){?>
-                
-              
-                   
-            <div class="event-brief">
+            <?php if(time() < strtotime($date)){?>     
+            <div class="event-brief wow pulse">
                 <h3 class="event-date"><?php echo get_the_date();?></h3>
                 <div class="row g-0 ">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-img">
                             <img src="<?php the_post_thumbnail_url();?>" class="img-fluid" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-time">
                         <h2><?php the_title();?></h2>
                             <ul>
@@ -59,7 +56,7 @@ get_header('2');?>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-12">
                         <div class="eb-text">
                             <?php the_field('event_content');?>
                             <ul>
@@ -71,7 +68,7 @@ get_header('2');?>
                         </div>
                     </div>
                 </div>
-                <div class="line-img">
+                <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/line2.png" alt="">
                 </div>
                 
@@ -80,25 +77,9 @@ get_header('2');?>
             
             <?php endwhile; wp_reset_postdata();?>
             <?php endif;?>
-                <div class="modal fade form-popup" id="event_registration_form" tabindex="-1" aria-hidden="true">
-
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body form-content p-4">
-                                <div class="section-intro text-start mb-4">
-                                    <h2><?php the_field('registration_form_title','option');?><span class="modal_event_title"></span></h2>
-                                    <?php the_field('registration_form_subtitle','option');?>
-                                </div>
-                                <?php 
-                $form_html = do_shortcode('[contact-form-7 id="437" title="Registration Form"]');
-                // Add the post title as a hidden field
-                $form_html = str_replace('</form>', '<input type="hidden" class="event_title" name="event_title" value="" /></form>', $form_html);
-                echo $form_html;
-                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- modalsection start -->
+                <?php get_template_part('pagetemplate/content','modal');?>
+                <!-- modalsection end -->
         </section>
     </div>
 </div>

@@ -381,16 +381,13 @@ $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?
 return $content; });
 
 // modal event_title mail_tags
-add_filter( 'wpcf7_mail_tag_replaced', 'replace_event_title_mail_tag', 10, 3 );
-function replace_event_title_mail_tag( $replaced, $substitute, $pattern ) {
-  // check if the mail tag being replaced is "[event-title]"
-  if ( $pattern == '[event-title]' ) {
-    // get the event title from the jQuery code
-    $event_title = 'jQuery(".event_title").val()';
-    // return the event title as the substitute for the mail tag
-    $replaced = $event_title;
-  }
-  return $replaced;
+add_action( 'wpcf7_mail_components', 'wpcf7_add_event_title_to_mail_tag' );
+
+function wpcf7_add_event_title_to_mail_tag( $components ) {
+    // get the event title from the hidden field
+    $event_title = sanitize_text_field( $_POST['event_title'] );
+    $components['body'] .= sprintf( 'The event title is: %s', $event_title );
+    return $components;
 }
 
 add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
