@@ -20,8 +20,8 @@ get_header('2'); ?>
 <div class="contact-form position-relative">
     <div class="container">
         <section class="cf-sec">
-            <div class="form-content">
-                <div class="section-intro text-start">
+            <div class="form-content wow fadeIn">
+                <div class="section-intro text-start ">
                     <!-- form title -->
                     <h2><?php the_field('form_title'); ?></h2>
                     <!-- form subtitle -->
@@ -72,7 +72,7 @@ get_header('2'); ?>
 
             </div>
             <div class="map large-pt position-relative">
-                <div class="map-detail">
+                <div class="map-detail wow fadeIn">
                     <!-- location title -->
                     <h3><?php the_field('location_title'); ?></h3>
                     <!-- location content -->
@@ -100,7 +100,7 @@ get_header('2'); ?>
             </div>
         </section>
     </div>
-    <div class="line-img">
+    <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
         <!-- bg image -->
         <?php $bg = get_field('bg_image'); ?>
         <?php if (!empty($bg)) :

@@ -27,7 +27,7 @@
                         <!-- -->
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer-content mt-5">
                         <!-- Quick Link Title -->
                         <h3><?php the_field('quick_links_title', 'option'); ?></h3>
@@ -45,7 +45,7 @@
                         <!--  -->
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer-content mt-5">
                         <!-- Contact Us Title -->
                         <h3><?php the_field('contact_us_title', 'option'); ?></h3>

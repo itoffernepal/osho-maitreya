@@ -19,7 +19,7 @@ get_header('2');?>
         <section class="ab-sec">
             <div class="filter">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="form-group">
                     <i class="fas fa-sliders-h"></i>
                         <select>
@@ -29,7 +29,7 @@ get_header('2');?>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <!-- <div class="form-group text-end">
                     <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search...">
@@ -51,7 +51,7 @@ get_header('2');?>
                     while($album_query->have_posts()) : $album_query->the_post(); global $post;
                 ?>
                 <div class="column">
-                <div class="slide-item ab-card">
+                <div class="slide-item ab-card wow fadeInUp">
                     <a href="<?php the_permalink();?>">
                         <div class="ab-img">
                             <img src="<?php the_post_thumbnail_url();?>" class="img-fluid">

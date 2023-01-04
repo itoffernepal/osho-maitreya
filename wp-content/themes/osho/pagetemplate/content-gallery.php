@@ -9,13 +9,13 @@
                 if ($gallery_query->have_posts()) :
                     while ($gallery_query->have_posts()) : $gallery_query->the_post();
                 ?>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-4 col-md-4 ">
 
                             <?php
                             $images = get_field('add_images');
                             if ($images) : ?>
 
-                                <div class="gallery-card">
+                                <div class="gallery-card wow fadeIn">
                                     <?php $gallery_rows = get_field('add_images'); ?>
                                     <span class="total-images"><?php echo $total_images = count($gallery_rows); ?> Photos</span>
 
