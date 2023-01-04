@@ -62,44 +62,47 @@
                 <p><?php the_field('audiobook_content'); ?></p>
             </div>
             <div class="ab-slider wow fadeIn">
-            <?php $albums = array(
+                <?php $albums = array(
                     'post_type'     => 'albums',
-                    'posts_per_page'=> -1,
+                    'posts_per_page' => -1,
                     'orderby'       => 'date',
                     'order'         => 'DES',
                 );
                 $album_query = new WP_Query($albums);
-                if($album_query->have_posts()):
-                    while($album_query->have_posts()) : $album_query->the_post(); global $post;
+                if ($album_query->have_posts()) :
+                    while ($album_query->have_posts()) : $album_query->the_post();
+                        global $post;
                 ?>
-                
-                <div class="slide-item ab-card">
-                    <a href="<?php the_permalink();?>">
-                        <div class="ab-img">
-                            <img src="<?php the_post_thumbnail_url();?>" class="img-fluid">
+
+                        <div class="slide-item ab-card">
+                            <a href="<?php the_permalink(); ?>">
+                                <div class="ab-img">
+                                    <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid">
+                                </div>
+                                <div class="ab-brief">
+                                    <ul class="meta-tag">
+                                        <li><?php echo get_the_date('F') ?> <?php echo get_the_date('d'); ?>
+                                            <?php echo get_the_date('Y'); ?></li>
+                                    </ul>
+                                    <h2><?php the_title(); ?></h2>
+                                    <!-- <span class="total-chapter">1 Chapters</span>  -->
+                                    <!-- number of chapter in album code start -->
+                                    <?php $playlists = get_field('album_playlist', $post->ID); ?>
+                                    <?php if (isset($playlists) && !empty($playlists)) : ?>
+                                        <?php $tracks = get_post_meta($playlists[0], '_audioigniter_tracks', true); ?>
+                                        <?php if (isset($tracks) &&  !empty($tracks)) : ?>
+                                            <?php //$unserliazedTracks = unserialize($tracks);
+                                            ?>
+                                            <span class="total-chapter"><?php echo count($tracks); ?> Chapters</span>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <!-- number of chapter in album code end -->
+                                </div>
+                            </a>
                         </div>
-                        <div class="ab-brief">
-                            <ul class="meta-tag">
-                                <li><?php echo get_the_date('F')?> <?php echo get_the_date('d');?>
-                                    <?php echo get_the_date('Y');?></li>
-                            </ul>
-                            <h2><?php the_title();?></h2>
-                            <!-- <span class="total-chapter">1 Chapters</span>  -->
-                            <!-- number of chapter in album code start -->
-                            <?php $playlists = get_field('album_playlist',$post->ID);?>
-                            <?php if(isset($playlists) && !empty($playlists)):?>
-                                <?php $tracks = get_post_meta($playlists[0],'_audioigniter_tracks',true);?>
-                                <?php  if(isset($tracks) &&  !empty($tracks)):?>
-                                    <?php //$unserliazedTracks = unserialize($tracks);?>
-                                    <span class="total-chapter"><?php echo count($tracks);?> Chapters</span>
-                                <?php endif;?>
-                            <?php endif;?>
-                            <!-- number of chapter in album code end -->
-                        </div>
-                    </a>
-                </div>
-                <?php endwhile;wp_reset_postdata();?>
-                <?php endif;?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                <?php endif; ?>
                 <!-- album cpt end -->
             </div>
             <div class="text-center more-link wow fadeInUp">
@@ -245,163 +248,30 @@
                 </div>
                 <?php the_field('upcoming_content'); ?>
             </div>
-            
-            <div class="event-brief wow pulse">
-                <div class="row g-0 ">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="eb-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/osho.png" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="eb-time">
-                        <h2>Osho Meditative Therapy</h2>
-                            <ul>
-                                <li>11 December on the occasion of Osho’s Birthday</li>
-                                <li>7 – 11 December, 2022</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="eb-text">
-                            <p> A very powerful & most fundamental meditative therapy designed by Osho for every
-                                meditator whether beginner or seasoned. There are 3 steps to dive deeper & allowing
-                                meditation to happen.</p>
-                            <ul>
-                                <li>Laughing-Tears-Silence.</li>
-                                <li>Facilitated by: Osho Maitreya Japan</li>
-                            </ul>
-                            <a href="#event-form" class="page-btn dark" data-bs-toggle="modal">Book now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="line-img wow fadeInLeft" data-wow-delay="0.5s">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/line2.png" alt="">
-                </div>
-                <!-- event modal -->
-                <!-- Modal -->
-                <div class="modal fade form-popup" id="event-form" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body form-content p-4">
-                                <div class="section-intro text-start mb-4">
-                                    <h2>Register for Event: Osho Meditative Therapy</h2>
-                                    <p>Please enter information to submit your query for event<br>Osho Meditative Therapy(2023).</p>
-                                </div>
 
-                                <!-- <form autocomplete="off">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>First Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>Last Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>Sannyas Name (If you Have)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="email" placeholder=" ">
-                                                <label>Your Email</label>
-                                            </div>
-                                        </div>
+            <!-- Our event cpt start -->
+            <?php $events = array(
+                'post_type' => 'ourevent',
+                'posts_per_page' => 1,
+                'orderby' => 'date',
+                'order' => 'DES',
+            );
+            $event_query = new WP_Query($events);
 
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="number" placeholder=" ">
-                                                <label>Phone Number</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <select class="floating-select" onclick="this.setAttribute('value', this.value);" value="">
-                                                    <option value=""></option>
-                                                    <option value="1">Male</option>
-                                                    <option value="2">Female</option>
-                                                    <option value="3">Third Gender</option>
-                                                </select>
-                                                <label>Select Gender</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="floating-label form-group">
-                                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
+            if ($event_query->have_posts()) :
+                while ($event_query->have_posts()) : $event_query->the_post();
+            ?>
+                    <?php get_template_part('pagetemplate/content', 'event'); ?>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
+            <?php endif; ?>
+            <!-- Our Event Cpt End -->
 
-                                                <label>Experience with osho</label>
-                                            </div>
-                                        </div>
+            <!-- modalsection start -->
+            <?php get_template_part('pagetemplate/content', 'modal'); ?>
+            <!-- modalsection end -->
 
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>Address Line 1</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>Address Line 2</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>City</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="text" placeholder=" ">
-                                                <label>State</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <input class="floating-input" type="number" placeholder=" ">
-                                                <label>ZIP</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="floating-label form-group">
-                                                <select class="floating-select" onclick="this.setAttribute('value', this.value);" value="">
-                                                    <option value=""></option>
-                                                    <option value="1">Country 1</option>
-                                                    <option value="2">Country 2</option>
-                                                    <option value="3">Country 3</option>
-                                                </select>
-                                                <label>Country</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="floating-label form-group">
-                                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
 
-                                                <label>Message</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button class="page-btn dark w-auto"> Submit</button>
-                                        </div>
-                                    </div>
-                                </form> -->
-                                <?php echo do_shortcode('[contact-form-7 id="372" title="Registration Form"]');
-                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- event modal close -->
-            </div>
             <div class="more-link mt-5 text-center wow fadeInUp">
                 <?php $upcoming_button = get_field('upcoming_event_button'); ?>
                 <?php if ($upcoming_button) :
@@ -426,7 +296,7 @@
                 <?php the_field('gallery_content'); ?>
             </div>
             <!-- Gallery Section -->
-            <?php get_template_part('pagetemplate/content','gallery');?>
+            <?php get_template_part('pagetemplate/content', 'gallery'); ?>
             <!-- end -->
             <div class="more-link mt-5 text-center wow fadeInUp">
                 <?php $gallery_button   = get_field('gallery_button'); ?>
