@@ -42,15 +42,15 @@ get_header('2');?>
                 
               
                    
-            <div class="event-brief">
+            <div class="event-brief wow pulse">
                 <h3 class="event-date"><?php echo get_the_date();?></h3>
                 <div class="row g-0 ">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-img">
                             <img src="<?php the_post_thumbnail_url();?>" class="img-fluid" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="eb-time">
                         <h2><?php the_title();?></h2>
                             <ul>
@@ -59,7 +59,7 @@ get_header('2');?>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-12">
                         <div class="eb-text">
                             <?php the_field('event_content');?>
                             <ul>
