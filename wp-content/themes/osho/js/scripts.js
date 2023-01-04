@@ -102,6 +102,20 @@ jQuery(document).ready(function () {
     // // show the modal 
     jQuery('.form-popup').modal('show')
 });
+
+
+  // add class in nav link
+
+  $(".navbar-nav li a").each(function () {
+    if (this.href == window.location.href) {
+      $(this).parent().addClass("active");
+    } else {
+      $(this).parent().removeClass("active");
+    }
+  });
+  // $(".navbar-nav li a").each(function () {
+  //   $(".active").closest(".nav-item").addClass("active");
+  // });
      
 
     // animation
