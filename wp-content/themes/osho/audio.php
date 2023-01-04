@@ -43,14 +43,14 @@ $args = array(
             <div class="filter">
             <div class="row align-items-center">
                 <div class="col-md-6 col-sm-6">
-                    <div class="form-group">
+                    <!-- <--<div class="form-group">
                     <i class="fas fa-sliders-h"></i>
                     <select id="sort-select">
                             <option>Sorted by latest</option>
                             <option>Sorted by oldest</option>
                             <option>Sorted by (A-Z)</option>
                         </select>
-                    </div> -->
+                    </div> --> 
                     <form method="get" action="">
                     <div class="form-group">
                     <i class="fas fa-sliders-h"></i>
@@ -77,6 +77,7 @@ $args = array(
                 <?php
 
 // Start the loop
+$query = new WP_Query($args);
 while ( $query->have_posts() ) : $query->the_post();
 ?>
                 <div class="column">
@@ -105,7 +106,7 @@ while ( $query->have_posts() ) : $query->the_post();
                 </div>
                 </div>
                 <?php endwhile;?>
-                <?php endif;?>
+                
                 <?php wp_reset_postdata();?>
                 </div>
             </div>
