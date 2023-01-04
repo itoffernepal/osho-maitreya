@@ -232,57 +232,66 @@ function gallery_custom_post_type() {
 // Event CPT
 function event_custom_post_type() {
   
-  // Set UI labels for Custom Post Type
-      $labels = array(
-          'name'                => _x( 'Events', 'Post Type General Name', 'osho' ),
-          'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'osho' ),
-          'menu_name'           => __( 'Events', 'osho' ),
-          'parent_item_colon'   => __( 'Parent Movie', 'osho' ),
-          'all_items'           => __( 'All Events', 'osho' ),
-          'view_item'           => __( 'View Event', 'osho' ),
-          'add_new_item'        => __( 'Add New Event', 'osho' ),
-          'add_new'             => __( 'Add New', 'osho' ),
-          'edit_item'           => __( 'Edit Event', 'osho' ),
-          'update_item'         => __( 'Update Event', 'osho' ),
-          'search_items'        => __( 'Search Event', 'osho' ),
-          'not_found'           => __( 'Not Found', 'osho' ),
-          'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
-      );
-        
-  // Set other options for Custom Post Type
-        
-      $args = array(
-          'label'               => __( 'events', 'osho' ),
-          'description'         => __( 'Event news and reviews', 'osho' ),
-          'labels'              => $labels,
-          // Features this CPT supports in Post Editor
-          'supports'            => array( 'title','editor','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-          // You can associate this CPT with a taxonomy or custom taxonomy. 
-          'taxonomies'          => array( 'genres' ),
-         
-          'hierarchical'        => false,
-          'public'              => true,
-          'show_ui'             => true,
-          'show_in_menu'        => true,
-          'show_in_nav_menus'   => true,
-          'show_in_admin_bar'   => true,
-          'menu_position'       => 5,
-          'menu_icon'           => 'dashicons-bell',
-          'can_export'          => true,
-          'has_archive'         => true,
-          'exclude_from_search' => false,
-          'publicly_queryable'  => true,
-          'capability_type'     => 'post',
-          'show_in_rest' => true,
-    
-      );
-        
-      // Registering your Custom Post Type
-      register_post_type( 'events', $args );
-    
-  }
-
-  add_action( 'init', 'event_custom_post_type', 0 );
+    // Set UI labels for Custom Post Type
+        $labels = array(
+            'name'                => _x( 'Our Events', 'Post Type General Name', 'osho' ),
+            'singular_name'       => _x( 'Our Event', 'Post Type Singular Name', 'osho' ),
+            'menu_name'           => __( 'Our Events', 'osho' ),
+            'parent_item_colon'   => __( 'Parent Our Event', 'osho' ),
+            'all_items'           => __( 'All Our Events', 'osho' ),
+            'view_item'           => __( 'View Our Event', 'osho' ),
+            'add_new_item'        => __( 'Add New Our Event', 'osho' ),
+            'add_new'             => __( 'Add New', 'osho' ),
+            'edit_item'           => __( 'Edit Our Event', 'osho' ),
+            'update_item'         => __( 'Update Our Event', 'osho' ),
+            'search_items'        => __( 'Search Our Event', 'osho' ),
+            'not_found'           => __( 'Not Found', 'osho' ),
+            'not_found_in_trash'  => __( 'Not found in Trash', 'osho' ),
+        );
+          
+    // Set other options for Custom Post Type
+          
+        $args = array(
+            'label'               => __( 'ourevents', 'osho' ),
+            'description'         => __( 'Our Event news and reviews', 'osho' ),
+            'labels'              => $labels,
+            // Features this CPT supports in Post Editor
+            'supports'            => array( 'title','excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            // You can associate this CPT with a taxonomy or custom taxonomy. 
+            'taxonomies'          => array( 'genres' ),
+            /* A hierarchical CPT is like Pages and can have
+            * Parent and child items. A non-hierarchical CPT
+            * is like Posts.
+            */
+            'hierarchical'        => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_nav_menus'   => true,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => 5,
+            'menu_icon'           => 'dashicons-calendar-alt',
+            'can_export'          => true,
+            'has_archive'         => true,
+            'exclude_from_search' => false,
+            'publicly_queryable'  => true,
+            'capability_type'     => 'post',
+            'show_in_rest' => true,
+      
+        );
+          
+        // Registering your Custom Post Type
+        register_post_type( 'ourevent', $args );
+      
+    }
+      
+    /* Hook into the 'init' action so that the function
+    * Containing our post type registration is not 
+    * unnecessarily executed. 
+    */
+      
+    add_action( 'init', 'event_custom_post_type', 0 );
+  
 
 //   *******************************************************************************
 // Album CPT
@@ -345,3 +354,4 @@ function album_custom_post_type() {
     add_filter('wpcf7_form_elements', function($content) {
 $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 return $content; });
+
