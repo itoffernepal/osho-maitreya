@@ -13,17 +13,16 @@
                 <nav id="navbar-main" class="navbar navbar-expand-lg  navbar-light">
                     <div class="container">
                         <!-- Header Logo -->
-                        <?php
-                        $custom_logo_id = get_theme_mod('custom_logo');
-                        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
-                        ?>
+                        
                         <a href="<?php echo site_url(); ?>" class="navbar-brand">
-                            <?php if ($image[0]) { ?>
-                                <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
+                          
+                                <!-- <img src="<?php //echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
 
                                 <!-- new logo -->
-                                <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png" class="img-fluid" alt="">
-                            <?php  } ?>
+                                <!-- <img src="<?php //echo get_template_directory_uri();?>/images/osho-maitrey-dark.png" class="img-fluid" alt=""> -->
+                                <img src="<?php echo get_theme_mod('osho_img_handle');?>" class="img-fluid"
+                                alt="<?php echo get_bloginfo( 'name' ); ?>">
+                            
                         </a>
                         <!--  -->
                         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
@@ -100,17 +99,17 @@
                 <div class="logo container">
                     <!-- Header Logo -->
                     <?php
-                        $custom_logo_id = get_theme_mod('custom_logo');
-                        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+                        //$custom_logo_id = get_theme_mod('custom_logo');
+                        //$image = wp_get_attachment_image_src($custom_logo_id, 'full');
                         ?>
                     <a href="<?php echo site_url(); ?>" class="navbar-brand m-0">
-                        <?php if ($image[0]) { ?>
-                        <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
+                        <?php //if ($image[0]) { ?>
+                        <!-- <img src="<?php //echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
 
                         <!-- new logo -->
-                        <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png"
+                        <img src="<?php echo get_theme_mod('osho_img_handle');?>"
                             class="img-fluid" alt="">
-                        <?php  } ?>
+                        <?php // } ?>
                     </a>
                 </div>
                 <span class="close-icon"><i class="fas fa-times"></i></span>

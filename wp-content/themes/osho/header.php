@@ -22,8 +22,9 @@
                             <?php if ($image[0]) { ?>
                             <img src="<?php echo $image[0]; ?>" class="img-fluid"
                                 alt="<?php echo get_bloginfo('name'); ?>">
-                            <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png"
-                                class="img-fluid on-hover" alt="">
+                            <!-- <img src="<?php //echo get_template_directory_uri();?>/images/osho-maitrey-dark.png"
+                                class="img-fluid on-hover" alt=""> -->
+                                
                             <?php  } ?>
                         </a>
                         <!--  -->
@@ -106,17 +107,17 @@
                 <div class="logo container">
                     <!-- Header Logo -->
                     <?php
-                        $custom_logo_id = get_theme_mod('custom_logo');
-                        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+                        //$custom_logo_id = get_theme_mod('custom_logo');
+                        //$image = wp_get_attachment_image_src($custom_logo_id, 'full');
                         ?>
                     <a href="<?php echo site_url(); ?>" class="navbar-brand m-0">
-                        <?php if ($image[0]) { ?>
-                        <!-- <img src="<?php echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
+                        <?php //if ($image[0]) { ?>
+                        <!-- <img src="<?php //echo get_template_directory_uri();?>/images/meditation.png" class="img-fluid" alt=""> -->
 
                         <!-- new logo -->
-                        <img src="<?php echo get_template_directory_uri();?>/images/osho-maitrey-dark.png"
+                        <img src="<?php echo get_theme_mod('osho_img_handle');?>"
                             class="img-fluid" alt="">
-                        <?php  } ?>
+                        <?php // } ?>
                     </a>
                 </div>
                 <span class="close-icon"><i class="fas fa-times"></i></span>

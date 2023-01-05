@@ -390,19 +390,109 @@ function wpcf7_add_event_title_to_mail_tag( $components ) {
     return $components;
 }
 
-add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
-function check_form_submission( $output, $status, $post_id ) {
-  if ( $status == 'mail_sent' ) {
-    // Form submission is being made
-    // Do something here
-  } else {
-    // Form submission is not being made
-    // Do something else here
-  }
-  return $output;
+// add_filter( 'wpcf7_form_response_output', 'check_form_submission', 10, 3 );
+// function check_form_submission( $output, $status, $post_id ) {
+//   if ( $status == 'mail_sent' ) {
+//     // Form submission is being made
+//     // Do something here
+//   } else {
+//     // Form submission is not being made
+//     // Do something else here
+//   }
+//   return $output;
+// }
+
+
+// Second logo section customizer
+function osho_customize_register($wp_customize){
+    //header section
+
+    $wp_customize-> add_section('osho_logo_section', [
+        'title' => __('Logo 2', 'osho'),
+        'priority' => 30,
+    ]);
+
+     //Footer Logo
+    $wp_customize -> add_setting('osho_img_handle',[
+        'transport' => 'refresh',
+        'height' => 320
+    ]);
+    $wp_customize-> add_control(new WP_Customize_Image_Control($wp_customize,'osho_img_handle_input', array(
+        'label' => __('Logo 2', 'osho'),
+        'section' => 'osho_logo_section',
+        'settings' => 'osho_img_handle',
+        
+    )));
 }
+add_action('customize_register', 'osho_customize_register');
 
 
+// Ajax searching
+
+// the ajax function
+add_action('wp_ajax_data_fetch' , 'data_fetch');
+add_action('wp_ajax_nopriv_data_fetch','data_fetch');
+function data_fetch(){
+    //render the array data
+    $args = array( 
+        'posts_per_page' => -1, 
+        's'              =>  $_GET['keyword'] ?? esc_attr( $_GET['keyword']), 
+        'post_type'      => 'albums' 
+    );
+    //check the user selected sort order
+    if(isset($_GET['sort_order'])):
+        switch (esc_attr($_GET['sort_order'])) :
+            case 'created_at_desc':
+                $args['orderby'] = 'date';
+                $args['order'] = 'DESC';
+                break;
+            case 'created_at_asc':
+                $args['orderby'] = 'date';
+                $args['order'] = 'ASC';
+                break;
+            case 'title':
+                $args['orderby'] = 'title';
+                $args['order'] = 'ASC';
+                break;
+        endswitch;
+    endif;
+    $the_query = new WP_Query($args);
+    if( $the_query->have_posts() ) :
+        while( $the_query->have_posts() ): $the_query->the_post(); ?>
+            <?php get_template_part('pagetemplate/content','album');?>
+        <?php endwhile;
+		wp_reset_postdata();  
+	else: 
+		echo '<h3>No Results Found</h3>';
+    endif;
+    die();
+}
+// add the ajax fetch js
+add_action( 'wp_footer', 'ajax_fetch' );
+function ajax_fetch() {
+?>
+<script type="text/javascript">
+function fetchResults(){
+	var keyword = jQuery('#searchInput').val();
+    //grap sort order
+    var sort_order = jQuery("#sort-select").val()
+    jQuery.ajax({
+        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        type: 'GET',
+        data: { action: 'data_fetch', keyword: keyword,sort_order: sort_order  },
+        beforeSend:function(){
+            //toggle loader
+        },
+        success: function(data) {
+            jQuery('.audiobook_content').html( data );
+            //toggle loader
+        },
+    });
+}
+</script>
+
+<?php
+}
 
 
 
