@@ -2,6 +2,7 @@
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body form-content p-4">
                 <div class="section-intro text-start mb-4">
                     <h2><?php the_field('registration_form_title', 'option'); ?><span class="modal_event_title"></span></h2>

@@ -112,7 +112,13 @@ footer section{
     display: block;
 }
 .cf-sec .section-intro h2{
-    font-size: 24px;
+    font-size: 24px;}
+.ab-card a img{
+    height: 350px;
+}
+.btn-close {
+    right: 5px;
+    top: 5px;
 }
 }
 
@@ -167,6 +173,9 @@ footer section{
 }
 .bg-attachment{
     background-attachment:unset !important;
+}
+.slick-active .slider-text{
+    animation:unset;
 }
 }
 

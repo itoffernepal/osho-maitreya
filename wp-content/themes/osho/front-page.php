@@ -69,7 +69,7 @@
         <div class="row">
             <!-- about osho image -->
             <div class="offset-lg-7 col-lg-5">
-                <div class="abt-video position-relative h-100">
+                <div class="abt-video position-relative h-100 wow zoomIn">
                     <?php $about_osho_image = get_field('about_osho_image'); ?>
                     <?php if (!empty($about_osho_image)) : ?>
                         <img src="<?php echo esc_url($about_osho_image['url']); ?>" class="img-fluid" alt="<?php echo esc_html($about_osho_image['alt']); ?>">
