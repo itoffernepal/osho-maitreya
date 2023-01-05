@@ -18,14 +18,16 @@
                         $custom_logo_id = get_theme_mod('custom_logo');
                         $image = wp_get_attachment_image_src($custom_logo_id, 'full');
                         ?>
+
                         <a href="<?php echo site_url(); ?>" class="navbar-brand">
                             <?php if ($image[0]) { ?>
                             <img src="<?php echo $image[0]; ?>" class="img-fluid"
                                 alt="<?php echo get_bloginfo('name'); ?>">
-                             <img src="<?php echo $image[0]; ?>"
-                                class="img-fluid on-hover" alt="<?php echo get_bloginfo('name'); ?>">
+                             
                                 
                             <?php  } ?>
+                            <img src="<?php echo get_theme_mod('osho_img_handle'); ?>"
+                                class="img-fluid on-hover" alt="<?php echo get_bloginfo('name'); ?>">
                         </a>
                         <!--  -->
                      
