@@ -162,8 +162,8 @@ footer section{
 .filter .form-group input{
     width: 100%;
 }
-.bg-attachment.position-relative{
-    background-position: unset !important;
+.bg-attachment{
+    background-attachment:unset !important;
 }
 }
 
