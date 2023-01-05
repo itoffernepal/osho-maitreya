@@ -1,17 +1,4 @@
-<div class="row">
-                <?php $gallery = array(
-                    'post_type'         => 'galleries',
-                    'posts_per_page'    => 3,
-                    'orderby'           => 'date',
-                    'order'             => 'DES',
-                );
-                $gallery_query = new WP_Query($gallery);
-                if ($gallery_query->have_posts()) :
-                    while ($gallery_query->have_posts()) : $gallery_query->the_post();
-                ?>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-
-                            <?php
+<?php
                             $images = get_field('add_images');
                             if ($images) : ?>
 
@@ -32,9 +19,3 @@
                                 </div>
 
                             <?php endif; ?>
-                        </div>
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
-                <?php endif; ?>
-
-            </div>

@@ -1,6 +1,7 @@
 <?php
 /*Template Name: About osho page */
 get_header('2'); ?>
+<!-- Banner Section Start -->
 <div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>">
     <div class="container">
         <section class="pb-sec pb-2">
@@ -14,6 +15,7 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<!-- Banner section End -->
 <div class="abt-osho ss-page">
     <div class="container">
         <section class="ao-sec">
