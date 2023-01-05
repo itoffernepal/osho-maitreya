@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="site-content">
+    <div <?php body_class(array('site-content'));?>>
         <header class="inner-header">
             <div class="main-menu">
                 <nav id="navbar-main" class="navbar navbar-expand-lg  navbar-light">

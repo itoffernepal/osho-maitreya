@@ -163,7 +163,7 @@ footer section{
     width: 100%;
 }
 .bg-attachment{
-    background-position: scroll !important;
+    background-attachment:unset !important;
 }
 }
 
