@@ -10,6 +10,10 @@
     }
 }
 @media (max-width: 991px){
+
+    .sub-menu{
+        display: none;
+    }
     .navbar-collapse{
         display: none !important;
     }
@@ -101,6 +105,12 @@ footer section{
 .ss-page section{
     padding-bottom: 25px!important;
 }
+.home-gallery-sec .row, .events-sec .more-link{
+    display: none;
+}
+.gallery-slider{
+    display: block;
+}
 }
 
 @media (max-width: 575px){
@@ -151,6 +161,9 @@ footer section{
 }
 .filter .form-group input{
     width: 100%;
+}
+.bg-attachment{
+    background-position: scroll !important;
 }
 }
 

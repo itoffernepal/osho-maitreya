@@ -84,10 +84,11 @@
         <?php endif; ?>
         <!--  -->
     </div>
+    <div id="btn-scrollup">
+        <a title="Go Top" class="scrollup button-circle" href="#"><i class="bi bi-chevron-up"></i></a>
+    </div>
 </footer>
 </div>
 <?php wp_footer(); ?>
 </body>
-
-
 </html>
