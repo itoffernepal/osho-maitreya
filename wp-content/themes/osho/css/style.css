@@ -821,12 +821,12 @@ header {
     border-radius: 5px;
 }
 .slick-active .slider-text{
-    -webkit-animation: slide 1s linear ; /* Safari */
-animation: slide 1s linear ;
+    -webkit-animation: slide2 1s linear ; /* Safari */
+animation: slid2 1s linear ;
 position: relative;
 }
 /* Safari */
-@-webkit-keyframes slide {
+@-webkit-keyframes slide2 {
     0% {
         right: -100px;
     }
@@ -836,7 +836,7 @@ position: relative;
     }
 }
 
-@keyframes slide {
+@keyframes slide2 {
     0% {
         right: -100px;
     }
