@@ -111,6 +111,9 @@ footer section{
 .gallery-slider{
     display: block;
 }
+.ab-card a img{
+    height: 350px;
+}
 }
 
 @media (max-width: 575px){
@@ -164,6 +167,9 @@ footer section{
 }
 .bg-attachment{
     background-attachment:unset !important;
+}
+.slick-active .slider-text{
+    animation:unset;
 }
 }
 
