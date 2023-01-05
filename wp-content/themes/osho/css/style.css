@@ -238,6 +238,11 @@ select {
     border-radius: 5px;
     padding: 12px;
     background: #FFFCF6;
+    min-height: 50px;
+}
+.wpcf7-select{
+    height:50px !important;
+    color:var(--color-black);
 }
 
 select:invalid {
@@ -263,6 +268,7 @@ textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--color-primary) !important;
+    background: transparent;
 }
 
 .my-select select:required:invalid {
@@ -743,6 +749,7 @@ header {
 
 .ab-slider .slide-item {
     margin: 0 12px;
+    height: 100%;
 }
 
 .slick-track {
@@ -822,7 +829,7 @@ header {
 }
 .slick-active .slider-text{
     -webkit-animation: slide2 1s linear ; /* Safari */
-animation: slid2 1s linear ;
+animation: slide2 1s linear ;
 position: relative;
 }
 /* Safari */
@@ -945,7 +952,6 @@ position: relative;
     margin-bottom: 35px;
 }
 .event-brief .row{
-    z-index: 222;
     position: relative;
     background: var(--color-lg-yellow);;
     border-radius: 5px;
@@ -960,7 +966,7 @@ position: relative;
     bottom: -20%;
     left: 10%;
     right: 0;
-    z-index: 0;
+    z-index: unset;
 }
 .event-date{
     font-size: 20px;
@@ -1543,3 +1549,13 @@ input.search-btn{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+.btn-close{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 222;
+}
+.btn-close:focus{
+    box-shadow: unset !important;
+    outline:unset !important;
+}

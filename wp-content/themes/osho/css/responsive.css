@@ -114,6 +114,10 @@ footer section{
 .ab-card a img{
     height: 350px;
 }
+.btn-close {
+    right: 5px;
+    top: 5px;
+}
 }
 
 @media (max-width: 575px){
