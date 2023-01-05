@@ -427,6 +427,73 @@ function osho_customize_register($wp_customize){
 add_action('customize_register', 'osho_customize_register');
 
 
+// Ajax searching
+
+// the ajax function
+add_action('wp_ajax_data_fetch' , 'data_fetch');
+add_action('wp_ajax_nopriv_data_fetch','data_fetch');
+function data_fetch(){
+    //render the array data
+    $args = array( 
+        'posts_per_page' => -1, 
+        's'              =>  $_GET['keyword'] ?? esc_attr( $_GET['keyword']), 
+        'post_type'      => 'albums' 
+    );
+    //check the user selected sort order
+    if(isset($_GET['sort_order'])):
+        switch (esc_attr($_GET['sort_order'])) :
+            case 'created_at_desc':
+                $args['orderby'] = 'date';
+                $args['order'] = 'DESC';
+                break;
+            case 'created_at_asc':
+                $args['orderby'] = 'date';
+                $args['order'] = 'ASC';
+                break;
+            case 'title':
+                $args['orderby'] = 'title';
+                $args['order'] = 'ASC';
+                break;
+        endswitch;
+    endif;
+    $the_query = new WP_Query($args);
+    if( $the_query->have_posts() ) :
+        while( $the_query->have_posts() ): $the_query->the_post(); ?>
+            <?php get_template_part('pagetemplate/content','album');?>
+        <?php endwhile;
+		wp_reset_postdata();  
+	else: 
+		echo '<h3>No Results Found</h3>';
+    endif;
+    die();
+}
+// add the ajax fetch js
+add_action( 'wp_footer', 'ajax_fetch' );
+function ajax_fetch() {
+?>
+<script type="text/javascript">
+function fetchResults(){
+	var keyword = jQuery('#searchInput').val();
+    //grap sort order
+    var sort_order = jQuery("#sort-select").val()
+    jQuery.ajax({
+        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        type: 'GET',
+        data: { action: 'data_fetch', keyword: keyword,sort_order: sort_order  },
+        beforeSend:function(){
+            //toggle loader
+        },
+        success: function(data) {
+            jQuery('.audiobook_content').html( data );
+            //toggle loader
+        },
+    });
+}
+</script>
+
+<?php
+}
+
 
 
 

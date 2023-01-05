@@ -12,10 +12,15 @@
 </form> -->
 
 
-<form role="search" method="get" class="form-inline search-form my-2 my-lg-0" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<!-- <form role="search" method="get" class="form-inline search-form my-2 my-lg-0" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 <div class="form-group text-end">
 <i class="fas fa-search"></i>
 	<input type="text" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'osho' ); ?>" value="<?php the_search_query(); ?>" aria-label="Search" name="s">
 </div>
 
-</form>
+</form> -->
+
+<div class="form-group text-end">
+<i class="fas fa-search"></i>
+	<input type="text" class="field" name="s" id="searchInput" onkeyup="fetchResults()" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'osho' ); ?>" >
+</div>
