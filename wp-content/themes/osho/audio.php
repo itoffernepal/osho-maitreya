@@ -47,9 +47,8 @@ $args = array(
                 </div>
             </div>
             <div class="ab-lists">
-                <div class="loader-animation text-center">
-                    <span></span>
-                </div>
+
+                    <div class="loader-animation"></div>
                 <div class="row justify-content-center audiobook_content">
                     <?php
 

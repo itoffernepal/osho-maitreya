@@ -1527,7 +1527,7 @@ input.search-btn{
     padding:5px 0;
 }
 
-.loader-animation span {
+.loader-animation {
     border: 8px solid #f3f3f3;
     border-radius: 50%;
     border-top: 8px solid var(--color-primary);
@@ -1537,6 +1537,7 @@ input.search-btn{
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
     display: none;
+    margin:0 auto 50px;
   }
   
   /* Safari */
