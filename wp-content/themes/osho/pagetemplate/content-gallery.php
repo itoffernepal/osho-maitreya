@@ -7,6 +7,7 @@
                                     <span class="total-images"><?php echo $total_images = count($gallery_rows); ?> Photos</span>
 
                                     <a href="<?php the_post_thumbnail_url(); ?>" data-fancybox="image-preview" caption="caption">
+                                    <h2><?php the_title(); ?></h2>
                                         <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid" alt="">
                                     </a>
                                     <?php foreach ($images as $image) : ?>

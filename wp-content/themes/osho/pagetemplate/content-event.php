@@ -18,13 +18,13 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
-                <div class="eb-text">
+                <div class="eb-text tedt">
                     <?php the_field('event_content'); ?>
                     <ul>
                         <li><?php the_field('event_quotation'); ?></li>
                         <li>Facilitated by: <?php the_field('event_faciliated_by'); ?></li>
                     </ul>
-                    <a href="#" class="page-btn dark event_modal_popup_btn" data-event-id="<?php echo get_the_ID(); ?>" data-event-title="<?php echo  get_the_title(); ?>">Book now</a>
+                    <a href="#" class="page-btn dark event_modal_popup_btn" data-bs-toggle="modal" data-event-id="<?php echo get_the_ID(); ?>" data-event-title="<?php echo  get_the_title(); ?>">Book now</a>
 
                 </div>
             </div>

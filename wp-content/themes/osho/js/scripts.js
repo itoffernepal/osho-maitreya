@@ -124,6 +124,10 @@ jQuery(document).ready(function () {
       jQuery(".mobile-navigation").removeClass("active");
   });
 
+  jQuery("select").on("click", function () {
+    jQuery(this).addClass("clicked");
+});
+
   jQuery(".event_modal_popup_btn").on("click", function (e) {
     e.preventDefault()
     //grab the data  event id

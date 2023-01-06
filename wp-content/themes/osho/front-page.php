@@ -268,6 +268,7 @@
                     while ($gallery_query->have_posts()) : $gallery_query->the_post();
                 ?>
                         <div class="col-lg-4 col-md-4 col-sm-6">
+                           
                             <!-- get template part of galleries  -->
                             <?php get_template_part('pagetemplate/content', 'gallery'); ?>
                             <!-- get template part of galleries end -->

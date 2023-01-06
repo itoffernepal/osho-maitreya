@@ -146,7 +146,9 @@ a:focus {
 .page-btn:before,
 .page-btn:after,
 .send:after,
-.send:before {
+.send:before,
+.wpforms-form button.wpforms-submit:after,
+.wpforms-form button.wpforms-submit:before {
     content: "";
     width: 130px;
     height: 100px;
@@ -166,7 +168,7 @@ a:focus {
     transition: 0.7s;
 }
 
-.page-btn.dark:before, .send:before {
+.page-btn.dark:before, .send:before, .wpforms-form button.wpforms-submit:before {
     background: #921E00;
 }
 
@@ -176,7 +178,8 @@ a:focus {
 }
 
 .page-btn:hover:before,
-.send:hover:before {
+.send:hover:before,
+.wpforms-form button.wpforms-submit:hover:before {
     right: -15px;
     top: 0px;
     transition: 0.4s;
@@ -184,7 +187,8 @@ a:focus {
 }
 
 .page-btn:hover:after,
-.send:hover:after {
+.send:hover:after,
+.wpforms-form button.wpforms-submit:hover:after {
     right: -45px;
     top: 15px;
     transition: 0.7s;
@@ -237,7 +241,7 @@ select {
     border: 1px solid #d6d6d6;
     border-radius: 5px;
     padding: 12px;
-    background: #FFFCF6;
+    /* background: #FFFCF6; */
     min-height: 50px;
 }
 .wpcf7-select{
@@ -1154,7 +1158,8 @@ footer{
     position: relative;
 }
 
-input:-webkit-autofill {
+input:-webkit-autofill,
+select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     background: transparent !important;
 }
@@ -1258,10 +1263,10 @@ input:-webkit-autofill {
   }
   
 
-  .form-content input::placeholder,
+  /* .form-content input::placeholder,
   .form-content textarea::placeholder{
     color:transparent;
-  }
+  } */
 
   .send input{
     background: transparent;
@@ -1559,3 +1564,13 @@ input.search-btn{
     box-shadow: unset !important;
     outline:unset !important;
 }
+
+
+select{
+  color: #585858 !important;
+}
+select.clicked{
+    color:var(--color-black) !important;
+}
+
+

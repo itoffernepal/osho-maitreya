@@ -375,10 +375,12 @@ function album_custom_post_type() {
         );
     }
     add_action('widgets_init', 'custom_widgets_init');
+
+
     // remove span in cf7
-    add_filter('wpcf7_form_elements', function($content) {
-$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
-return $content; });
+//     add_filter('wpcf7_form_elements', function($content) {
+// $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+// return $content; });
 
 // modal event_title mail_tags
 add_action( 'wpcf7_mail_components', 'wpcf7_add_event_title_to_mail_tag' );
@@ -494,10 +496,19 @@ function fetchResults(){
 <?php
 }
 
+/**
+ * Modify the required field indicator
+ *
+ * @link https://wpforms.com/developers/how-to-change-required-field-indicator/
+ */
+function wpf_dev_required_indicator( $text ) {
+    return ' <span class="wpforms-required-label">' . __( ' ', 'wpforms' ) . '</span>';
+}
+add_filter( 'wpforms_get_field_required_label', 'wpf_dev_required_indicator', 10, 1 );
 
 
 
-
+ 
 
 
 
