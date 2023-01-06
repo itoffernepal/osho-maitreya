@@ -1,7 +1,7 @@
 <?php
 /*Template Name: Contact Us page */
 get_header('2'); ?>
-<!-- Banner Image -->
+<!-- Banner Section Start -->
 <div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>);">
     <div class="container">
         <section class="pb-sec pb-2">
@@ -17,6 +17,9 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<!-- Banner Section End -->
+
+<!-- Content Section Start -->
 <div class="contact-form position-relative">
     <div class="container">
         <section class="cf-sec">
@@ -28,44 +31,6 @@ get_header('2'); ?>
                     <p><?php the_field('form_subtitle'); ?></p>
                 </div>
                 <!-- contact form -->
-                <!-- <form autocomplete="off">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="floating-label form-group">
-                                <input class="floating-input" type="text" placeholder=" ">
-                                <label>First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="floating-label form-group">
-                                <input class="floating-input" type="text" placeholder=" ">
-                                <label>Last Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="floating-label form-group">
-                                <input class="floating-input" type="number" placeholder=" ">
-                                <label>Phone Number</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="floating-label form-group">
-                                <input class="floating-input" type="email" placeholder=" ">
-                                <label>Your Email</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="floating-label form-group">
-                                <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
-
-                                <label>Message</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <button class="page-btn dark w-auto"> Submit</button>
-                        </div>
-                    </div>
-                </form> -->
                 <?php echo do_shortcode('[contact-form-7 id="75" title="Contact Form"]');
                 ?>
 
@@ -109,5 +74,5 @@ get_header('2'); ?>
         <?php endif; ?>
     </div>
 </div>
-
+<!-- Content Section End -->
 <?php get_footer(); ?>

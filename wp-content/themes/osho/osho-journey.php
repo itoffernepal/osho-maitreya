@@ -1,6 +1,7 @@
 <?php
 /*Template Name: Osho Journey page */
 get_header('2'); ?>
+<!-- Banner Section -->
 <div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>);">
     <div class="container">
         <section class="pb-sec pb-2">
@@ -14,52 +15,62 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<!-- Banner Section End -->
+
+<!-- Content Section  -->
 <div class="journey ss-page">
     <div class="container">
         <section class="journey-sec">
             <div class="section-intro text-startvwow fadeIn">
                 <div class="section-title">
+                    <!-- title -->
                     <h2><?php the_field('title'); ?></h2>
                 </div>
             </div>
             <div class="journey-period">
-            <div class="row mb-5 pb-5">
-                <div class="col-lg-4">
-                    <div class="estd-img wow fadeInUp">
-                        <?php $image1 = get_field('image'); ?>
-                        <?php if (!empty($image1)) : ?>
-                            <img src="<?php echo esc_url($image1['url']); ?>" class="img-fluid" alt="<?php echo esc_html($image1['alt']); ?>">
-                        <?php endif; ?>
+                <div class="row mb-5 pb-5">
+                    <div class="col-lg-4">
+                        <div class="estd-img wow fadeInUp">
+                            <!-- image -->
+                            <?php $image1 = get_field('image'); ?>
+                            <?php if (!empty($image1)) : ?>
+                                <img src="<?php echo esc_url($image1['url']); ?>" class="img-fluid" alt="<?php echo esc_html($image1['alt']); ?>">
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="estd-text wow fadeIn">
+                            <!-- content -->
+                            <?php the_field('text_content'); ?>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="estd-text wow fadeIn">
-                        <?php the_field('text_content'); ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-lg-8">
-                    <div class="estd-text wow fadeIn">
-                        <?php the_field('text_content_2'); ?>
+                <div class="row mb-5">
+                    <div class="col-lg-8">
+                        <div class="estd-text wow fadeIn">
+                            <!-- content 2 -->
+                            <?php the_field('text_content_2'); ?>
 
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="estd-img wow fadeInUp">
+                            <!-- image 2 -->
+                            <?php $image2 = get_field('image_2'); ?>
+                            <?php if (!empty($image2)) : ?>
+                                <img src="<?php echo esc_url($image2['url']); ?>" class="img-fluid" alt="<?php echo esc_html($image2['alt']); ?>">
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="estd-img wow fadeInUp">
-                        <?php $image2 = get_field('image_2'); ?>
-                        <?php if (!empty($image2)) : ?>
-                            <img src="<?php echo esc_url($image2['url']); ?>" class="img-fluid" alt="<?php echo esc_html($image2['alt']); ?>">
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
             </div>
             <div class="quote-part small-p">
                 <div class="quotation wow fadeInUp">
+                    <!-- quotation -->
                     <?php the_field('quote'); ?>
                 </div>
                 <div class="more-link mt-5 text-center wow fadeInUp">
+                    <!-- button -->
                     <?php $button = get_field('button'); ?>
                     <?php if ($button) :
                         $button_url = $button['url'];
@@ -72,5 +83,5 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
-
+<!-- Content Section End -->
 <?php get_footer(); ?>

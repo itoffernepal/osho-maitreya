@@ -1,6 +1,7 @@
 <?php
 /*Template Name: Audio page */
 get_header('2'); ?>
+<!-- Banner Section Start -->
 <div class="page-banner" style="background: url(<?php the_post_thumbnail_url(); ?>">
     <div class="container">
         <section class="pb-sec pb-2">
@@ -14,6 +15,10 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<!-- Banner Section End -->
+
+<!-- Content Section start -->
+<!-- Albums CPt -->
 <?php
 // Set up the arguments for the custom query
 $args = array(
@@ -25,24 +30,25 @@ $args = array(
             <div class="filter">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <i class="fas fa-sliders-h"></i>
-                                <select name="sortby" id="sort-select" onchange="fetchResults()">
-                                    <option value="created_at_desc">Sorted by latest</option>
-                                    <option value="created_at_asc">Sorted by oldest</option>
-                                    <option value="title">Sorted by (A-Z)</option>
-                                </select>
-                            </div>
+                        <!-- Sorting Form-->
+                        <div class="form-group">
+                            <i class="fas fa-sliders-h"></i>
+                            <select name="sortby" id="sort-select" onchange="fetchResults()">
+                                <option value="created_at_desc">Sorted by latest</option>
+                                <option value="created_at_asc">Sorted by oldest</option>
+                                <option value="title">Sorted by (A-Z)</option>
+                            </select>
+                        </div>
                     </div>
+                    <!-- Search form -->
                     <div class="col-md-6 col-sm-6">
                         <?php get_search_form(); ?>
                     </div>
                 </div>
             </div>
             <div class="ab-lists">
-                <div class="loader-animation text-center">
-                    <span></span>
-                </div>
+
+                    <div class="loader-animation"></div>
                 <div class="row justify-content-center audiobook_content">
                     <?php
 
@@ -50,15 +56,17 @@ $args = array(
                     $query = new WP_Query($args);
                     while ($query->have_posts()) : $query->the_post();
                     ?>
-                        <?php  get_template_part('pagetemplate/content','album');?>
+                        <!-- Album Template Part start -->
+                        <?php get_template_part('pagetemplate/content', 'album'); ?>
+                        <!-- Album Template Part End -->
                     <?php endwhile; ?>
-
                     <?php wp_reset_postdata(); ?>
+                    <!-- End Loop -->
                 </div>
             </div>
 
         </section>
     </div>
 </div>
-
+<!-- Content Section End -->
 <?php get_footer(); ?>

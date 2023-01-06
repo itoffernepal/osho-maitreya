@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div <?php body_class(array('site-content'));?>>
+    <div <?php body_class(array('site-content')); ?>>
         <header class="inner-header">
             <div class="main-menu">
                 <nav id="navbar-main" class="navbar navbar-expand-lg  navbar-light">
@@ -16,17 +16,9 @@
                         <!-- Header Logo -->
 
                         <a href="<?php echo site_url(); ?>" class="navbar-brand">
-
-                            <!-- <img src="<?php //echo get_template_directory_uri();
-                                            ?>/images/meditation.png" class="img-fluid" alt=""> -->
-
-                            <!-- new logo -->
-                            <!-- <img src="<?php //echo get_template_directory_uri();
-                                            ?>/images/osho-maitrey-dark.png" class="img-fluid" alt=""> -->
                             <img src="<?php echo get_theme_mod('osho_img_handle'); ?>" class="img-fluid" alt="<?php echo get_bloginfo('name'); ?>">
-
                         </a>
-                        <!--  -->
+                        <!-- end -->
                         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                             <!-- Header Menu Section -->
                             <?php
@@ -98,21 +90,10 @@
         <div class="mobile-navigation d-none">
             <div class="side-menu-header mb-3">
                 <div class="logo container">
-                    <!-- Header Logo -->
-                    <?php
-                    //$custom_logo_id = get_theme_mod('custom_logo');
-                    //$image = wp_get_attachment_image_src($custom_logo_id, 'full');
-                    ?>
-                    <a href="<?php echo site_url(); ?>" class="navbar-brand m-0">
-                        <?php //if ($image[0]) { 
-                        ?>
-                        <!-- <img src="<?php //echo get_template_directory_uri();
-                                        ?>/images/meditation.png" class="img-fluid" alt=""> -->
 
+                    <a href="<?php echo site_url(); ?>" class="navbar-brand m-0">
                         <!-- new logo -->
                         <img src="<?php echo get_theme_mod('osho_img_handle'); ?>" class="img-fluid" alt="">
-                        <?php // } 
-                        ?>
                     </a>
                 </div>
                 <span class="close-icon"><i class="fas fa-times"></i></span>

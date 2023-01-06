@@ -195,7 +195,7 @@
 <!-- Event Section Start -->
 <div class="events">
     <div class="container">
-        <section class="events-sec">
+        <section class="events-sec pb-0">
             <div class="section-intro wow fadeIn">
                 <div class="section-title">
                     <h2><?php the_field('upcoming_title'); ?></h2>
@@ -246,7 +246,7 @@
 <!-- Gallery Section Start -->
 <div class="gallery">
     <div class="container">
-        <section class="home-gallery-sec pt-0">
+        <section class="home-gallery-sec">
             <div class="section-intro">
                 <div class="section-title">
                     <!-- title -->

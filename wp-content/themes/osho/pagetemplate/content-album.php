@@ -1,5 +1,5 @@
 <div class="column">
-    <div class="slide-item ab-card wow fadeInUp">
+    <div class="slide-item ab-card">
         <a href="<?php the_permalink(); ?>">
             <div class="ab-img">
             <?php 

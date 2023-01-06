@@ -16,11 +16,14 @@ get_header('2'); ?>
     </div>
 </div>
 <!-- Banner section End -->
+
+<!-- About Content Section -->
 <div class="abt-osho ss-page">
     <div class="container">
         <section class="ao-sec">
             <div class="section-intro text-start wow fadeIn">
                 <div class="section-title">
+                    <!-- title -->
                     <h2>
                         <?php the_field('title'); ?> </h2>
                 </div>
@@ -29,13 +32,16 @@ get_header('2'); ?>
                 <div class="col-lg-7">
                     <div class="ao-text wow fadeIn">
                         <div class="text-center ao-highlight">
+                            <!-- Bold text -->
                             <p><?php the_field('highlighted_text'); ?></p>
                         </div>
+                        <!-- content -->
                         <?php the_field('text_content'); ?>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="ao-img wow fadeInUp">
+                        <!-- About Image -->
                         <?php $about_img = get_field('about_image'); ?>
                         <?php if (!empty($about_img)) : ?>
                             <img src="<?php echo esc_url($about_img['url']); ?>" class="img-fluid" alt="<?php echo esc_html($about_img['alt']); ?>">
@@ -45,10 +51,12 @@ get_header('2'); ?>
             </div>
             <div class="quote-part small-p wow fadeInUp">
                 <div class="quotation">
+                    <!-- Quotation -->
                     <?php the_field('quote'); ?>
                 </div>
             </div>
             <div class="lg-image text-center wow fadeIn">
+                <!-- Second Image -->
                 <figure>
                     <?php $about_img2 = get_field('about_image_2'); ?>
                     <?php if (!empty($about_img2)) : ?>
@@ -56,8 +64,10 @@ get_header('2'); ?>
                     <?php endif; ?>
                 </figure>
             </div>
+            <!-- Second Content -->
             <?php the_field('text_content_2'); ?>
             <div class="quote-part small-p wow fadeIn">
+                <!-- Second Quotation -->
                 <div class="quotation">
                     <?php the_field('quote_2'); ?>
                 </div>
@@ -65,4 +75,5 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<!-- End -->
 <?php get_footer(); ?>

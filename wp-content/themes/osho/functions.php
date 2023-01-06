@@ -376,7 +376,6 @@ function album_custom_post_type() {
     }
     add_action('widgets_init', 'custom_widgets_init');
 
-
     // remove span in cf7
 //     add_filter('wpcf7_form_elements', function($content) {
 // $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
@@ -484,10 +483,13 @@ function fetchResults(){
         data: { action: 'data_fetch', keyword: keyword,sort_order: sort_order  },
         beforeSend:function(){
             //toggle loader
+            jQuery('.audiobook_content').html('');
+            jQuery('.loader-animation').show();
         },
         success: function(data) {
             jQuery('.audiobook_content').html( data );
             //toggle loader
+            jQuery('.loader-animation').hide();
         },
     });
 }
