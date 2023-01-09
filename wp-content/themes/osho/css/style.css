@@ -240,10 +240,10 @@ select {
     background: #FFFCF6;
     min-height: 50px;
 }
-.wpcf7-select{
+/* .wpcf7-select{
     height:50px !important;
     color:var(--color-black);
-}
+} */
 
 select:invalid {
     color: #585858;

@@ -18,6 +18,23 @@ get_header('2'); ?>
 <!-- Banner Section End -->
 
 <!-- Events Content Section Start -->
+<?php $events = array(
+                'post_type' => 'ourevent',
+                'posts_per_page' => -1,
+                'orderby' => 'meta_value',
+                'meta_key' => 'event_end_date',
+                'order' => 'DES',
+                'meta_query' => array(
+                    array(
+                        'meta_key'  => 'event_end_date',
+                        'value'     => date('ymd'),
+                        'compare'   => '>=',
+                        'type'      => 'DATE'
+                    )
+                )
+            );
+    $event_details = new WP_Query($events);
+    if ($event_details->have_posts()):?>
 <div class="all-events">
     <div class="container">
         <section class="all-events-sec">
@@ -29,27 +46,14 @@ get_header('2'); ?>
                 <!-- content -->
                 <?php the_field('content'); ?>
             </div>
-            <!-- Our Event Cpt Start -->
-            <?php $events = array(
-                'post_type' => 'ourevent',
-                'posts_per_page' => -1,
-                'orderby' => 'date',
-                'order' => 'DES',
-            );
-            $event_query = new WP_Query($events);
-
-            if ($event_query->have_posts()) :
-                while ($event_query->have_posts()) : $event_query->the_post();
+            <?php while ($event_details->have_posts()) : $event_details->the_post();
             ?>
-
                     <!-- Template Parts -->
                     <?php get_template_part('pagetemplate/content', 'event'); ?>
                     <!-- Template Parts end -->
 
-                <?php endwhile;
-                wp_reset_postdata(); ?>
-            <?php endif; ?>
-            <!-- Our Event Cpt End of loop -->
+                <?php endwhile; ?>
+            <!-- Our Event Cpt End -->
 
             <!-- modalsection start -->
             <?php get_template_part('pagetemplate/content', 'modal'); ?>
@@ -57,5 +61,9 @@ get_header('2'); ?>
         </section>
     </div>
 </div>
+<?php
+endif;
+  wp_reset_postdata();
+?>
 <!-- Event Content Section End -->
 <?php get_footer(); ?>

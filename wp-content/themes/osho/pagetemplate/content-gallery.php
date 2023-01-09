@@ -11,7 +11,7 @@ if ($images) : ?>
         </a>
         <?php foreach ($images as $image) : ?>
             <div class="more-images" style="display:none">
-                <a href="<?php echo esc_url($image['url']); ?>" data-fancybox="image-preview" caption="caption">
+                <a href="<?php echo esc_url($image['url']); ?>" data-fancybox="image-preview" data-caption="<?php echo esc_attr($image['caption']); ?>">
 
                 </a>
             </div>

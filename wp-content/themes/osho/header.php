@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
 <head>
     <meta charset="utf-8">
@@ -84,9 +84,10 @@
                             <!-- Header Menu End -->
                         </div>
                         <div class="nav-right d-flex align-items-center">
-                            <div class="lang text-end ms-4">
+                            <!-- <div class="lang text-end ms-4">
                                 <img src="<?php echo get_template_directory_uri(); ?>/images/lang-switch.png" alt="" class="img-fluid">
-                            </div>
+                            </div> -->
+                            
                             <div class="mobile-menu-icon d-none ms-4">
                                 <span class="icon"><i class="fas fa-bars"></i></span>
                             </div>

@@ -193,6 +193,23 @@
 <!-- Quote Section End -->
 
 <!-- Event Section Start -->
+<?php $events = array(
+                'post_type' => 'ourevent',
+                'posts_per_page' => 1,
+                'orderby' => 'meta_value',
+                'meta_key' => 'event_end_date',
+                'order' => 'DES',
+                'meta_query' => array(
+                    array(
+                        'meta_key'  => 'event_end_date',
+                        'value'     => date('ymd'),
+                        'compare'   => '>=',
+                        'type'      => 'DATE'
+                    )
+                )
+            );
+    $event_details = new WP_Query($events);
+    if ($event_details->have_posts()):?>
 <div class="events">
     <div class="container">
         <section class="events-sec">
@@ -202,26 +219,13 @@
                 </div>
                 <?php the_field('upcoming_content'); ?>
             </div>
-
-            <!-- Our event cpt start -->
-            <?php $events = array(
-                'post_type' => 'ourevent',
-                'posts_per_page' => 1,
-                'orderby' => 'date',
-                'order' => 'DES',
-            );
-            $event_query = new WP_Query($events);
-
-            if ($event_query->have_posts()) :
-                while ($event_query->have_posts()) : $event_query->the_post();
+            <?php while ($event_details->have_posts()) : $event_details->the_post();
             ?>
                     <!-- Template Parts -->
                     <?php get_template_part('pagetemplate/content', 'event'); ?>
                     <!-- Template Parts end -->
 
-                <?php endwhile;
-                wp_reset_postdata(); ?>
-            <?php endif; ?>
+                <?php endwhile; ?>
             <!-- Our Event Cpt End -->
 
             <!-- modalsection start -->
@@ -241,6 +245,12 @@
         </section>
     </div>
 </div>
+<?php
+endif;
+  wp_reset_postdata();
+?>
+
+
 <!-- Event Section End -->
 
 <!-- Gallery Section Start -->

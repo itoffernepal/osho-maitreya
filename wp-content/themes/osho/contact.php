@@ -10,6 +10,7 @@ get_header('2'); ?>
             <nav aria-label="breadcrumb" class="page-menu">
                 <ul class="breadcrumb">
                     <!-- links -->
+                    
                     <li><a href="<?php echo site_url('/'); ?>">Home</a></li>
                     <li><?php the_title(); ?></li>
                 </ul>

@@ -506,9 +506,6 @@ function fetchResults(){
 
 
 
-
-
-
     
   
 

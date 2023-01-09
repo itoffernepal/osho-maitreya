@@ -19,8 +19,11 @@
                             <?php if (have_rows('footer_icons', 'option')) : ?>
                                 <?php while (have_rows('footer_icons', 'option')) : the_row();
                                     $icon = get_sub_field('icon');
+                                    $icon_url = get_sub_field('icon_url');
                                 ?>
-                                    <li><a href="<?php the_sub_field('icon_url', 'option'); ?>" target="_blank"><?php echo $icon; ?></a></li>
+                                <?php if(!empty($icon_url)) :?>
+                                    <li><a href="<?php echo $icon_url;?>" target="_blank"><?php echo $icon; ?></a></li>
+                                    <?php endif;?>
                                 <?php endwhile; ?>
                             <?php endif; ?>
                         </ul>
