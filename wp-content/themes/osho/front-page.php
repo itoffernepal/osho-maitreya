@@ -212,7 +212,7 @@
     if ($event_details->have_posts()):?>
 <div class="events">
     <div class="container">
-        <section class="events-sec">
+        <section class="events-sec pb-0">
             <div class="section-intro wow fadeIn">
                 <div class="section-title">
                     <h2><?php the_field('upcoming_title'); ?></h2>
@@ -256,7 +256,7 @@ endif;
 <!-- Gallery Section Start -->
 <div class="gallery">
     <div class="container">
-        <section class="home-gallery-sec pt-0">
+        <section class="home-gallery-sec">
             <div class="section-intro">
                 <div class="section-title">
                     <!-- title -->
@@ -278,6 +278,7 @@ endif;
                     while ($gallery_query->have_posts()) : $gallery_query->the_post();
                 ?>
                         <div class="col-lg-4 col-md-4 col-sm-6">
+                           
                             <!-- get template part of galleries  -->
                             <?php get_template_part('pagetemplate/content', 'gallery'); ?>
                             <!-- get template part of galleries end -->
